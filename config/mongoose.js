@@ -17,7 +17,12 @@ module.exports = function () {
     });
 
   // Load the database models here
-
+  require("../app/models/account.server.model");
+  require("../app/models/nurse.server.model");
+  require("../app/models/emergencyAlert.server.model");
+  require("../app/models/motivationalTip.server.model");
+  require("../app/models/vitalSign.server.model");
+  require("../app/models/patient.server.model");
   // Return the Mongoose connection instance
   return db;
 };
