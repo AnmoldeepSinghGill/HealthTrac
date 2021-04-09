@@ -1,4 +1,4 @@
-const Account = require('mongoose').model('account');
+const Account = require('mongoose').model('Account');
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -32,6 +32,25 @@ const getErrorMessage = function(err) {
 	return message;
 };
 
+
+exports.create = function (req, res, next) {
+	
+    // Create a new instance of the 'Account' Mongoose model
+    var account = new Account(req.body); //get data from React form
+    console.log("body: " + req.body.accountNumber);
+
+    // Use the 'Account' instance's 'save' method to save a new student document
+    account.save(function (err) {
+        if (err) {
+            // Call the next middleware with an error message
+            return next(err);
+        } else {
+            // Use the 'response' object to send a JSON response
+            res.json(account);
+            
+        }
+    });
+};
 
 // authenticates a student
 exports.authenticate = function(req, res, next) {

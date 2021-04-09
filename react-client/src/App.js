@@ -15,7 +15,7 @@ import List from './components/List';
 import EditStudent from './components/EditStudent';
 import EditArticle from './components/EditArticle';
 
-import CreateUser from './components/CreateStudent';
+import CreateAccount from './components/CreateAccount';
 import ShowUser from './components/ShowStudent';
 import ShowArticle from './components/ShowArticle';
 
@@ -46,7 +46,7 @@ function App() {
           <Route render ={()=> < List />} path="/list" />
           <Route render ={()=> < ListCourses />} path="/listCourses" />
           <Route render ={()=> < EditStudent />} path="/edit/:id" />
-          <Route render ={()=> < CreateUser />} path="/create" />
+          <Route render ={()=> < CreateAccount/>} path="/create" />
           <Route render ={()=> < ShowUser />} path="/show/:id" />
           <Route render ={()=> < ShowArticle />} path="/showCourse/:id" />
           <Route render ={()=> < EditArticle />} path="/editarticle/:id" />
