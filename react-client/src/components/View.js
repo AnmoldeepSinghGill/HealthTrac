@@ -36,16 +36,7 @@ function View (props) {
   //
  
   //
-  const createArticle = () => {
-    console.log('in createArticle')
-    setArticle('y')
-
-  }
-
-  const editStudent = (id) => {
-  
-
-  }
+ 
 
   
   //
@@ -55,10 +46,8 @@ function View (props) {
         ? <div>
             <p>{screen}</p>
             <p>{data}</p>
-            <button onClick={verifyCookie}>Verify Cookie</button>
-            <button onClick={createArticle}>Add Course</button>
-     
-            <button onClick={editStudent}>Edit Student</button>
+            
+          
             <button onClick={deleteCookie}>Log out</button>
           </div>            
         : <CreateArticle screen={screen} setScreen={setScreen} />
