@@ -4,15 +4,23 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import Select from 'react-select'
+
 //
 import View from './View'
 //
 function App() {
+
+  const options = [
+    {value:'PATIENT',label:'PATIENT'},
+    {value:'NURSE',label:'NURSE'}
+]
   //state variable for the screen, admin or user
   const [screen, setScreen] = useState('auth');
   //store input field data, user name and password
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  
   const apiUrl = "http://localhost:3001/signin";
   //send username and password to the server
   // for initial authentication
@@ -72,6 +80,9 @@ function App() {
           <br/>
           <input type="password" onChange={e => setPassword(e.target.value)} />
           <br/>
+          <br/>
+           <Select options={options} />
+           <br/>
           <button onClick={auth}>Login</button>
         </div>
         : <View screen={screen} setScreen={setScreen} />
