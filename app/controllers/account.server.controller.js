@@ -40,7 +40,7 @@ exports.authenticate = function(req, res, next) {
 	const accountNumber = req.body.auth.accountNumber;
 	const password  = req.body.auth.password;
 	console.log(password)
-	console.log(studentNumber)
+	console.log(accountNumber)
 	try{
 	//find the student with given studentNumber using static method findOne
 	Account.findOne({accountNumber: accountNumber}, (err, account) => {
