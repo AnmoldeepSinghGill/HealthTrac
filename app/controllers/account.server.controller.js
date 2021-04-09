@@ -56,13 +56,13 @@ exports.create = function (req, res, next) {
 exports.authenticate = function(req, res, next) {
 	// Get credentials from request
 	console.log(req.body)
-	const accountNumber = req.body.auth.accountNumber;
+	const email = req.body.auth.email;
 	const password  = req.body.auth.password;
 	console.log(password)
-	console.log(accountNumber)
+	console.log(email)
 	try{
 	//find the student with given studentNumber using static method findOne
-	Account.findOne({accountNumber: accountNumber}, (err, account) => {
+	Account.findOne({email: email}, (err, account) => {
 			if (err) {
 				return next(err);
 			} else {
@@ -71,13 +71,13 @@ exports.authenticate = function(req, res, next) {
 			if(bcrypt.compareSync(password, account.password)) {
 				// Create a new token with the student id in the payload
   				// and which expires 300 seconds after issue
-				const token = jwt.sign({ id: account._id, account: student.accountNumber }, jwtKey, 
+				const token = jwt.sign({ id: account._id, email: account.email }, jwtKey, 
 					{algorithm: 'HS256', expiresIn: jwtExpirySeconds });
 				console.log('token:', token)
 				// set the cookie as the token string, with a similar max age as the token
 				// here, the max age is in milliseconds
 				res.cookie('token', token, { maxAge: jwtExpirySeconds * 1000,httpOnly: true});
-				res.status(200).send({ screen: account.accountNumber});
+				res.status(200).send({ screen: account.email});
 				//
 				//res.json({status:"success", message: "Account found!!!", data:{account:
 				//account, token:token}});
@@ -86,7 +86,7 @@ exports.authenticate = function(req, res, next) {
 				//call the next middleware
 				next()
 			} else {
-				res.json({status:"error", message: "Invalid account number/password!!!",
+				res.json({status:"error", message: "Invalid email/password!!!",
 				data:null});
 			}
 			
@@ -202,3 +202,5 @@ exports.requiresLogin = function (req, res, next) {
 	//call next function in line
     next();
 };
+
+
