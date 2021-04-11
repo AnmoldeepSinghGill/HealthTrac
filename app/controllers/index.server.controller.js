@@ -1,3 +1,5 @@
+
+
 // Create a new render method to render index.ejs
 
 exports.render = function (req, res) {
