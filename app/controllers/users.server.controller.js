@@ -13,7 +13,7 @@ const jwtKey = config.secretKey;
 // @access   Public
 exports.createUser = async (req, res) => {
     
-    const { firstName, lastName, email, password, address, city, phoneNumber, accountType } = req.body;
+    const {studentNumber, firstName, lastName, email, password, address, city, phoneNumber, accountType } = req.body;
     console.log(req.body);
     try {
         let user = await Account.findOne({ email });
@@ -21,8 +21,10 @@ exports.createUser = async (req, res) => {
         if (user) {
             return res.status(400).json({ msg: 'User already exists'});
         }
-
+        // let tempStudentNumber = parseInt(studentNumber);
+        // console.log("Student number is ", tempStudentNumber);
         user = new Account({
+            studentNumber ,
             firstName,
             lastName,
             email,
@@ -36,20 +38,23 @@ exports.createUser = async (req, res) => {
         await user.save();
 
         const payload = {
-            id: user._id
+            user: {
+                id: user._id
+            }
         }
 
         // Create token with the id of the user in the payload and expires as per jwtExpirySeconds
-        const token = jwt.sign(payload, jwtKey, 
+        jwt.sign(payload, jwtKey, 
             {
                 algorithm: 'HS256', expiresIn: jwtExpirySeconds
+            },
+            (err, token) => {
+                if (err) {
+                    throw err;
+                }
+                res.json({ token });
             }
         );
-
-        res.cookie('token', token, { maxAge: jwtExpirySeconds * 1000,httpOnly: true});
-        res.status(200).json({ token });
-                
-        req.user=user;
 
     } catch(err) {
         console.error(err.message);
