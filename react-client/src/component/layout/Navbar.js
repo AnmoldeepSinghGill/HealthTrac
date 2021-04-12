@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import AuthContext from '../../context/auth/authContext';
 import { useHistory } from 'react-router-dom';
 
-const Navbar = ({ title, icon}) => {
+const Navbar = ({ title }) => {
     const history = useHistory();
 
     const authContext = useContext(AuthContext);
@@ -42,7 +42,7 @@ const Navbar = ({ title, icon}) => {
     return (
         <div className="navbar bg-primary">
             <h1>
-                <i className={icon} /> {title}
+                <span className="material-icons-outlined" ></span> {title}
             </h1>
             <ul>
                 {isAuthenticated ? authLinks : guestLinks}                
@@ -52,13 +52,12 @@ const Navbar = ({ title, icon}) => {
 };
 
 Navbar.propTypes = {
-    title: PropTypes.string.isRequired,
-    icon: PropTypes.string,
+    title: PropTypes.string.isRequired
 }
 
 Navbar.defaultProps = {
     title: 'Health Trac',
-    icon: 'fas fa-id-card-alt'
+    icon: 'material-icons-outlined'
 }
 
 export default Navbar
