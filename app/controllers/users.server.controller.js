@@ -8,39 +8,48 @@ const config = require('../../config/config');
 const jwtExpirySeconds = 60 * 60 * 2;
 const jwtKey = config.secretKey;
 
-exports.authenticate = function(req, res, next) {
-    const userName = req.body.auth.username;
-    const password = req.body.auth.password;
+exports.createUser = async (req, res) => {
+    
+    const { firstName, lastName, email, password, address, city, phoneNumber, accountType } = req.body;
+    console.log(req.body);
+    try {
+        let user = await Account.findOne({ email });
 
-    // finding the account of user
-    Account.findOne({username: userName}, (err, user) => {
-        if (err) {
-            return next(err);
-        } else {
-
-            // compare passwords
-            if (bcrypt.compareSync(password, user.password)) {
-                // create payload
-                const payload = {
-                    id: user._id,
-                    username: user.username
-                }
-                // Create token with the id of the user in the payload and expires as per jwtExpirySeconds
-                const token = jwt.sign(payload, jwtKey, 
-                            {
-                                algorithm: 'HS256', expiresIn: jwtExpirySeconds
-                            }
-                );
-                
-                res.cookie('token', token, { maxAge: jwtExpirySeconds, httpOnly: true});
-                res.status(200).send({ screen: user.username });
-
-                req.user = user;
-                next();
-            } else {
-                res.json({ status: 'error', message: 'Invalid username/password', data: null });
-            }
+        if (user) {
+            return res.status(400).json({ msg: 'User already exists'});
         }
-    });
-};
 
+        user = new Account({
+            firstName,
+            lastName,
+            email,
+            password,
+            address,
+            city,
+            phoneNumber,
+            accountType
+        });
+
+        await user.save();
+
+        const payload = {
+            id: user._id
+        }
+
+        // Create token with the id of the user in the payload and expires as per jwtExpirySeconds
+        const token = jwt.sign(payload, jwtKey, 
+            {
+                algorithm: 'HS256', expiresIn: jwtExpirySeconds
+            }
+        );
+
+        res.cookie('token', token, { maxAge: jwtExpirySeconds * 1000,httpOnly: true});
+        res.status(200).json({ token });
+                
+        req.user=user;
+
+    } catch(err) {
+        console.error(err.message);
+        res.status(500).send('server error');
+    }
+};
