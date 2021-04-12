@@ -8,6 +8,9 @@ const config = require('../../config/config');
 const jwtExpirySeconds = 60 * 60 * 2;
 const jwtKey = config.secretKey;
 
+// @route    GET  api/users
+// @desc     Post for register a user (Nurse/ Patient)
+// @access   Public
 exports.createUser = async (req, res) => {
     
     const { firstName, lastName, email, password, address, city, phoneNumber, accountType } = req.body;
