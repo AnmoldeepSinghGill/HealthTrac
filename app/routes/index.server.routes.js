@@ -8,4 +8,6 @@ var index = require("../controllers/index.server.controller");
 module.exports = function (app) {
   //handle a get request made to root path
   app.get("/", index.render);
+
+  
 };

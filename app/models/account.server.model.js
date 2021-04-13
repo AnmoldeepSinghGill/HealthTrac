@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 
 // Define a new 'Account Schema'
 const AccountSchema = new Schema({
-  studentNumber: Number,
+  accountNumber: Number,
   firstName: String,
   lastName: String,
   email: {
