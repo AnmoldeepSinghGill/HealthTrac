@@ -18,7 +18,7 @@ import {
 const AuthState = props => {
     // Declare the states here
     const initialState = {
-        token: localStorage.getItem('token'),
+        token: sessionStorage.getItem('token'),
         isAuthenticated: null,
         loading: true,
         user: null,
@@ -31,8 +31,8 @@ const AuthState = props => {
     const loadUser = async () => {
 
         // @todo - load the token into global headers
-        if (localStorage.token) {
-            setAuthToken(localStorage.token);
+        if (sessionStorage.token) {
+            setAuthToken(sessionStorage.token);
         }
         try {
             const res = await axios.get('http://localhost:5000/api/auth');
