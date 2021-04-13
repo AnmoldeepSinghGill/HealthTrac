@@ -7,7 +7,9 @@ import Register from './component/auth/Register';
 import Navbar from './component/layout/Navbar';
 import setAuthToken from '../src/utils/setAuthToken';
 import PrivateRoute from './component/routing/privateRoute';
+import Alert from './component/layout/Alert';
 import './App.css';
+import AlertState from './context/alert/AlertState';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -16,18 +18,21 @@ if (localStorage.token) {
 function App() {
   return (
     <AuthState>
-      <Router>
-        <Fragment>
-          <Navbar />
-          <div className="container">
-            <Switch>
-              <PrivateRoute exact path='/' component={Home} />
-              <Route exact path='/login' component={Login} />
-              <Route exact path='/register' component={Register} />
-            </Switch>
-          </div>
-        </Fragment>
-      </Router>
+      <AlertState>
+        <Router>
+          <Fragment>
+            <Navbar />
+            <div className="container">
+              <Alert />
+              <Switch>
+                <PrivateRoute exact path='/' component={Home} />
+                <Route exact path='/login' component={Login} />
+                <Route exact path='/register' component={Register} />
+              </Switch>
+            </div>
+          </Fragment>
+        </Router>
+      </AlertState>
     </AuthState>
   );
 }

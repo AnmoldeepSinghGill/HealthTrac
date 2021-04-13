@@ -1,11 +1,16 @@
 import { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
+import AlertContext from '../../context/alert/alertContext';
 
 const Register = () => {
     const history = useHistory();
     const authContext = useContext(AuthContext);
+    const alertContext = useContext(AlertContext);
+
     const { register, error, clearErrors, isAuthenticated } = authContext;
+    const { setAlert } = alertContext;
+
 
     const [ user, setUser ] = useState({
         studentNumber: '',
@@ -27,8 +32,12 @@ const Register = () => {
             history.push('/');
         }
 
+        if (error === 'User already exists') {
+            setAlert(error, 'danger');
+            clearErrors();
+        }
         // eslint-disable-next-line
-    }, [isAuthenticated]);
+    }, [error, isAuthenticated]);
 
     const onChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
@@ -36,10 +45,14 @@ const Register = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log('Register Submit');
-        register({
-            firstName, lastName, studentNumber , email, password, address, city, phoneNumber, accountType
-        });
+        if ( password !== password2 ) {
+            setAlert('Passwords do not match', 'danger');
+        } else {
+            console.log('Register Submit');
+            register({
+                firstName, lastName, studentNumber , email, password, address, city, phoneNumber, accountType
+            });
+        }
     }
 
     return (

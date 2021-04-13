@@ -1,13 +1,15 @@
 import { useState, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
-// import AlertContext from '../../context/alert/alertContext';
+import AlertContext from '../../context/alert/alertContext';
 
 const Login = () => {
     const authContext = useContext(AuthContext);
+    const alertContext = useContext(AlertContext);
     const history = useHistory();
 
     const { login, error, clearErrors, isAuthenticated } = authContext;
+    const { setAlert } = alertContext;
 
     useEffect(() => {
         if (isAuthenticated) {
@@ -15,6 +17,7 @@ const Login = () => {
         }
 
         if (error === 'Invalid Credentials'){
+            setAlert(error, 'danger');
             clearErrors();
         }
         // eslint-disable-next-line
