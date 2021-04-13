@@ -22,8 +22,8 @@ import CreateAccount from './components/CreateAccount';
 import ShowUser from './components/ShowStudent';
 import ShowArticle from './components/ShowArticle';
 
-import Home from './components/Home';
-import Login from './components/Login';
+import Home from './component/pages/Home';
+import Login from './component/auth/Login';
 import ListCourses from './components/ListCourses';
 //
 
