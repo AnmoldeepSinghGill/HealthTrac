@@ -101,7 +101,7 @@ const Register = () => {
                     <label htmlFor="phoneNumber">Phone Number</label>
                     <input type="text" name='phoneNumber' value={phoneNumber} onChange={onChange} required/>
                 </div>
-                <h4>Account Type</h4>
+                <div>Account Type</div>
                 <input type="radio" name='accountType' value='PATIENT' checked={accountType === 'PATIENT'} onChange={onChange}/> Patient{' '}
                 <input type="radio" name='accountType' value='NURSE' checked={accountType === 'NURSE'} onChange={onChange}/> Nurse{' '}
                 <input type="submit" value="register" className='btn btn-primary btn-block' />
