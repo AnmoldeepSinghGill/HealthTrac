@@ -17,4 +17,4 @@ app.listen(5000);
 // Use the module.exports property to expose our Express application instance for external usage
 module.exports = app; //returns the application object
 // Log the server status to the console
-console.log("Server running at http://localhost:3001/");
+console.log("Server running at http://localhost:5000/");
