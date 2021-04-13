@@ -17,7 +17,6 @@ const Register = () => {
 
     // states to get the user lregistration information in the form
     const [ user, setUser ] = useState({
-        accountNumber: '',
         firstName: '',
         lastName: '',
         email: '',
@@ -29,7 +28,7 @@ const Register = () => {
         accountType: 'PATIENT'
     });
     // destructure from the user object
-    const {accountNumber, firstName, lastName, email, password, password2, address, city, phoneNumber, accountType } = user;
+    const {firstName, lastName, email, password, password2, address, city, phoneNumber, accountType } = user;
 
     useEffect(() => {
         if (isAuthenticated) {
@@ -54,7 +53,7 @@ const Register = () => {
         } else {
             console.log('Register Submit');
             register({
-                firstName, lastName, accountNumber , email, password, address, city, phoneNumber, accountType
+                firstName, lastName , email, password, address, city, phoneNumber, accountType
             });
         }
     }
@@ -65,10 +64,10 @@ const Register = () => {
                 Account <span className="text-primary">Register</span>
             </h1>
             <form onSubmit={onSubmit} >
-                <div className="form-group">
-                    <label htmlFor="accountNumber">Account Number</label>
-                    <input type="text" name='accountNumber' value={accountNumber} onChange={onChange} required/>
-                </div>
+                {/*<div className="form-group">*/}
+                {/*    <label htmlFor="accountNumber">Account Number</label>*/}
+                {/*    <input type="text" name='accountNumber' value={accountNumber} onChange={onChange} required/>*/}
+                {/*</div>*/}
                 <div className="form-group">
                     <label htmlFor="firstName">First Name</label>
                     <input type="text" name='firstName' value={firstName} onChange={onChange} required/>

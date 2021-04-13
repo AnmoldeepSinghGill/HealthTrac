@@ -37,7 +37,6 @@ exports.create = function (req, res, next) {
 	
     // Create a new instance of the 'Account' Mongoose model
     var account = new Account(req.body); //get data from React form
-    console.log("body: " + req.body.accountNumber);
 
     // Use the 'Account' instance's 'save' method to save a new student document
     account.save(function (err) {
