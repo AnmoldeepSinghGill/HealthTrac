@@ -1,3 +1,4 @@
+// This file manipulates states of the AlertState
 import {
     SET_ALERT,
     REMOVE_ALERT

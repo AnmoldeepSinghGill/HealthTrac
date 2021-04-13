@@ -4,14 +4,18 @@ import AuthContext from '../../context/auth/authContext';
 import AlertContext from '../../context/alert/alertContext';
 
 const Register = () => {
+    // Redirect to appropriate component using history
     const history = useHistory();
+    // used for accessing login information from this component
     const authContext = useContext(AuthContext);
+    // used for accessing error information from this component
     const alertContext = useContext(AlertContext);
-
+    // destructure states from authContext
     const { register, error, clearErrors, isAuthenticated } = authContext;
+    // destructure state from alertContext
     const { setAlert } = alertContext;
 
-
+    // states to get the user lregistration information in the form
     const [ user, setUser ] = useState({
         studentNumber: '',
         firstName: '',
@@ -24,7 +28,7 @@ const Register = () => {
         phoneNumber: '',
         accountType: 'PATIENT'
     });
-
+    // destructure from the user object
     const {studentNumber, firstName, lastName, email, password, password2, address, city, phoneNumber, accountType } = user;
 
     useEffect(() => {
@@ -38,11 +42,11 @@ const Register = () => {
         }
         // eslint-disable-next-line
     }, [error, isAuthenticated]);
-
+    // Fills out all the properties of user state when changed
     const onChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
     }
-
+    // Submit function
     const onSubmit = (e) => {
         e.preventDefault();
         if ( password !== password2 ) {

@@ -1,3 +1,5 @@
+// This file performs the actions and passes the data to alertReducer to change the state
+
 import { useReducer } from 'react';
 import AlertContext from './alertContext';
 import alertReducer from './alertReducer';

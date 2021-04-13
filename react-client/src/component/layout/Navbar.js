@@ -15,7 +15,7 @@ const Navbar = ({ title }) => {
         logout();
         history.push('/login');
     }
-
+    // If the user is logged in then this fragment gets displayed in Navbar
     const authLinks = (
         <Fragment>
             <li>Hello { user && user.firstName }</li>
@@ -26,7 +26,7 @@ const Navbar = ({ title }) => {
             </li>
         </Fragment>
     ); 
-
+    // If the user is not logged in this fragment gets displayed in Navbar
     const guestLinks = (
         <Fragment>
             <li>
@@ -57,7 +57,6 @@ Navbar.propTypes = {
 
 Navbar.defaultProps = {
     title: 'Health Trac',
-    icon: 'material-icons-outlined'
 }
 
 export default Navbar
