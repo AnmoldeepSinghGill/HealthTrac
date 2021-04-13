@@ -1,11 +1,12 @@
 import { useContext, useEffect } from 'react';
 import AuthContext from '../../context/auth/authContext';
 
-const NurseDashboard = () => {
+const NurseDashboard = (props) => {
     const authContext = useContext(AuthContext);
     const { loadUser } = authContext;
 
     useEffect(() => {
+        console.log(props);
         // loadUser();
     }, []);
 

@@ -15,8 +15,8 @@ const Home = () => {
     return (
         <div>
             {!loading && user && user.accountType === 'PATIENT' ?
-                (<PatientDashboard/>):
-                (<NurseDashboard/>)
+                (<PatientDashboard user={user}/>):
+                (<NurseDashboard user={user}/>)
             }
         </div>
     );
