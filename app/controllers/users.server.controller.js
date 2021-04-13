@@ -13,7 +13,7 @@ const jwtKey = config.secretKey;
 // @access   Public
 exports.createUser = async (req, res) => {
     
-    const {studentNumber, firstName, lastName, email, password, address, city, phoneNumber, accountType } = req.body;
+    const {accountNumber, firstName, lastName, email, password, address, city, phoneNumber, accountType } = req.body;
     console.log(req.body);
     try {
         let user = await Account.findOne({ email });
@@ -24,7 +24,7 @@ exports.createUser = async (req, res) => {
         // let tempStudentNumber = parseInt(studentNumber);
         // console.log("Student number is ", tempStudentNumber);
         user = new Account({
-            studentNumber ,
+            accountNumber ,
             firstName,
             lastName,
             email,
