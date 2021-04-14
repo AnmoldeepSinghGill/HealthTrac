@@ -144,7 +144,7 @@ const Register = () => {
                     <label htmlFor="nurseId">Nurse</label>
                     <select name="nurseId" onChange={onChangeNurseId} value={nurseId} required>
                         {nursesList.map((nurse, idx) => (
-                            <option key={idx} value={nurse.id}>{nurse.firstName} {nurse.lastName}</option>
+                            <option key={idx} value={nurse._id}>{nurse.firstName} {nurse.lastName}</option>
                         ))}
                     </select >
                 </div>
