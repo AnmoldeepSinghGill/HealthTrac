@@ -11,6 +11,8 @@ import Register from './component/auth/Register';
 import Navbar from './component/layout/Navbar';
 import setAuthToken from '../src/utils/setAuthToken';
 import PrivateRoute from './component/routing/privateRoute';
+import PatientVitalSign from './component/patient/PatientVitalSign';
+import PatientState from './context/patient/PatientState';
 import Nav from 'react-bootstrap/Nav';
 import './App.css';
 //
@@ -61,20 +63,23 @@ function App() {
     // </Router>
     <AuthState>
       <AlertState>
-        <Router>
-          <Fragment>
-            <Navbar />
-            <div className="container">
-              <Alert />
-              <Switch>
-                {/* Use PrivateRoute for private access components */}
-                <PrivateRoute exact path='/' component={Home} />
-                <Route exact path='/login' component={Login} />
-                <Route exact path='/register' component={Register} />
-              </Switch>
-            </div>
-          </Fragment>
-        </Router>
+        <PatientState>
+          <Router>
+            <Fragment>
+              <Navbar />
+              <div className="container">
+                <Alert />
+                <Switch>
+                  {/* Use PrivateRoute for private access components */}
+                  <PrivateRoute exact path='/' component={Home} />
+                  <Route exact path='/login' component={Login} />
+                  <Route exact path='/register' component={Register} />
+                  <Route exact path='/patient/vitalsign' component={PatientVitalSign} />
+                </Switch>
+              </div>
+            </Fragment>
+          </Router>
+        </PatientState>
       </AlertState>
     </AuthState>
   );
