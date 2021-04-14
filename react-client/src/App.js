@@ -27,8 +27,8 @@ import Login from './component/auth/Login';
 import ListCourses from './components/ListCourses';
 //
 
-if (localStorage.token) {
-  setAuthToken(localStorage.token);
+if (sessionStorage.token) {
+  setAuthToken(sessionStorage.token);
 }
 
 function App() {

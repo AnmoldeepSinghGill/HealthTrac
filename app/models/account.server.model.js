@@ -6,7 +6,6 @@ const Schema = mongoose.Schema;
 
 // Define a new 'Account Schema'
 const AccountSchema = new Schema({
-  accountNumber: Number,
   firstName: String,
   lastName: String,
   email: {
@@ -17,7 +16,6 @@ const AccountSchema = new Schema({
     match: /.+\@.+\..+/,
     unique: true,
   },
-
   password: {
     type: String,
     // Validate the 'password' value length
