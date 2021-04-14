@@ -13,6 +13,7 @@ const Home = () => {
 
     // showing the appropriate dashboard for appropriate account type
     return (
+        
         <div>
             {!loading && user && user.accountType === 'PATIENT' ?
                 (<PatientDashboard user={user}/>):

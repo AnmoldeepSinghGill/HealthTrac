@@ -29,10 +29,10 @@ const Register = () => {
         city: '',
         phoneNumber: '',
         accountType: 'PATIENT',
-        nurseId: ''
     });
+    const [nurseId, setNurseId] = useState('');
     // destructure from the user object
-    const {firstName, lastName, email, password, password2, address, city, phoneNumber, accountType, nurseId } = user;
+    const {firstName, lastName, email, password, password2, address, city, phoneNumber, accountType } = user;
 
     const [ nursesList, setNursesList ] = useState([]);
     const [ radioSelection, setRadioSelection ] = useState('PATIENT');
@@ -58,9 +58,14 @@ const Register = () => {
         }
     }
 
+    const onChangeNurseId = (e) => {
+        setNurseId({...nurseId, [e.target.name]: e.target.value });
+    }
+
     const getAllNurses = async () => {
        await axios.get('http://localhost:3000/api/nurses').then((result) => {
            setNursesList(result.data);
+           setNurseId(result.data[0].id);
        }).catch((error) => {
            console.log("error in fetching nurses:", error);
        });
@@ -72,10 +77,20 @@ const Register = () => {
         if ( password !== password2 ) {
             setAlert('Passwords do not match', 'danger');
         } else {
-            console.log('Nurse id is ', nurseId);
-            register({
-                firstName, lastName , email, password, address, city, phoneNumber, accountType, nurseId
-            });
+            console.log('Register Submit');
+            if (user.accountType === 'PATIENT') {
+                if (nurseId !== '') {
+                    register({
+                        firstName, lastName , email, password, address, city, phoneNumber, accountType, nurseId
+                    });
+                } else {
+                    setAlert('Please select nurse for the patient.', 'danger');
+                }
+            } else {
+                register({
+                    firstName, lastName , email, password, address, city, phoneNumber, accountType, nurseId
+                });
+            }
         }
     }
 
@@ -127,8 +142,7 @@ const Register = () => {
                 {radioSelection === 'PATIENT' &&
                 <div className="form-group">
                     <label htmlFor="nurseId">Nurse</label>
-                    <select name="nurseId" onChange={onChange} value={user.nurseId} required>
-                        <option key={1} value=''></option>
+                    <select name="nurseId" onChange={onChangeNurseId} value={nurseId} required>
                         {nursesList.map((nurse, idx) => (
                             <option key={idx} value={nurse._id}>{nurse.firstName} {nurse.lastName}</option>
                         ))}
