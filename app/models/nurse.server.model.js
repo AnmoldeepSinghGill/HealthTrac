@@ -7,13 +7,7 @@ const NurseSchema = new Schema({
   account: {
     type: Schema.Types.ObjectId,
     ref: "Account",
-  },
-  patients: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Patient",
-    },
-  ],
+  }
 });
 
 // Configure the 'NurseSchema' to use getters and virtuals when transforming to JSON
