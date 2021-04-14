@@ -35,7 +35,7 @@ const AuthState = props => {
             setAuthToken(sessionStorage.token);
         }
         try {
-            const res = await axios.get('http://localhost:5000/api/auth');
+            const res = await axios.get('http://localhost:3000/api/auth');
             
             dispatch({ 
                 type: USER_LOADED,
@@ -56,14 +56,14 @@ const AuthState = props => {
         }
 
         try {
-            const res = await axios.post('http://localhost:5000/api/users', formData, config);
+            const res = await axios.post('http://localhost:3000/api/createAccount', formData, config);
             console.log(res.data);
             dispatch({
                 type: REGISTER_SUCCESS,
                 payload: res.data
             });
 
-            loadUser();
+            await loadUser();
         } catch (err) {
             console.log(err.response);
             dispatch({
@@ -82,14 +82,14 @@ const AuthState = props => {
         };
 
         try {
-            const res = await axios.post('http://localhost:5000/api/signin', formData, config);
+            const res = await axios.post('http://localhost:3000/api/signIn', formData, config);
 
             dispatch({
                 type: LOGIN_SUCCESS,
                 payload: res.data
             });
 
-            loadUser();
+            await loadUser();
         } catch (err) {
             dispatch({
                 type: LOGIN_FAIL,

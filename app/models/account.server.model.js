@@ -16,7 +16,6 @@ const AccountSchema = new Schema({
     match: /.+\@.+\..+/,
     unique: true,
   },
-
   password: {
     type: String,
     // Validate the 'password' value length

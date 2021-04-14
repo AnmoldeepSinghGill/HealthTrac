@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 import AlertContext from '../../context/alert/alertContext';
+import axios from "axios";
 
 const Register = () => {
     // Redirect to appropriate component using history
@@ -15,6 +16,8 @@ const Register = () => {
     // destructure state from alertContext
     const { setAlert } = alertContext;
 
+    const apiUrl = 'http://localhost:3000/api/nurses';
+
     // states to get the user lregistration information in the form
     const [ user, setUser ] = useState({
         firstName: '',
@@ -25,15 +28,21 @@ const Register = () => {
         address: '',
         city: '',
         phoneNumber: '',
-        accountType: 'PATIENT'
+        accountType: 'PATIENT',
+        nurseId: ''
     });
     // destructure from the user object
-    const {firstName, lastName, email, password, password2, address, city, phoneNumber, accountType } = user;
+    const {firstName, lastName, email, password, password2, address, city, phoneNumber, accountType, nurseId } = user;
+
+    const [ nursesList, setNursesList ] = useState([]);
+    const [ radioSelection, setRadioSelection ] = useState('PATIENT');
 
     useEffect(() => {
         if (isAuthenticated) {
             history.push('/');
         }
+
+        getAllNurses();
 
         if (error === 'User already exists') {
             setAlert(error, 'danger');
@@ -44,7 +53,19 @@ const Register = () => {
     // Fills out all the properties of user state when changed
     const onChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
+        if (e.target.name === 'accountType') {
+            setRadioSelection(e.target.value)
+        }
     }
+
+    const getAllNurses = async () => {
+       await axios.get('http://localhost:3000/api/nurses').then((result) => {
+           setNursesList(result.data);
+       }).catch((error) => {
+           console.log("error in fetching nurses:", error);
+       });
+    };
+
     // Submit function
     const onSubmit = (e) => {
         e.preventDefault();
@@ -53,7 +74,7 @@ const Register = () => {
         } else {
             console.log('Register Submit');
             register({
-                firstName, lastName , email, password, address, city, phoneNumber, accountType
+                firstName, lastName , email, password, address, city, phoneNumber, accountType, nurseId
             });
         }
     }
@@ -103,7 +124,17 @@ const Register = () => {
                 <div>Account Type</div>
                 <input type="radio" name='accountType' value='PATIENT' checked={accountType === 'PATIENT'} onChange={onChange}/> Patient{' '}
                 <input type="radio" name='accountType' value='NURSE' checked={accountType === 'NURSE'} onChange={onChange}/> Nurse{' '}
-                <input type="submit" value="register" className='btn btn-primary btn-block' />
+                {radioSelection === 'PATIENT' &&
+                <div className="form-group">
+                    <label htmlFor="nurseId">Nurse</label>
+                    <select name="nurseId" onChange={onChange} value={user.nurseId} required>
+                        {nursesList.map((nurse, idx) => (
+                            <option key={idx} value={nurse.id}>{nurse.firstName} {nurse.lastName}</option>
+                        ))}
+                    </select >
+                </div>
+                }
+                <input type="submit" value="Register" className='btn btn-primary btn-block' />
             </form>
         </div>
     );
