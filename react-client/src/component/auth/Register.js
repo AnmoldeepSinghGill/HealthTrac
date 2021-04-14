@@ -72,7 +72,7 @@ const Register = () => {
         if ( password !== password2 ) {
             setAlert('Passwords do not match', 'danger');
         } else {
-            console.log('Register Submit');
+            console.log('Nurse id is ', nurseId);
             register({
                 firstName, lastName , email, password, address, city, phoneNumber, accountType, nurseId
             });
@@ -128,8 +128,9 @@ const Register = () => {
                 <div className="form-group">
                     <label htmlFor="nurseId">Nurse</label>
                     <select name="nurseId" onChange={onChange} value={user.nurseId} required>
+                        <option key={1} value=''></option>
                         {nursesList.map((nurse, idx) => (
-                            <option key={idx} value={nurse.id}>{nurse.firstName} {nurse.lastName}</option>
+                            <option key={idx} value={nurse._id}>{nurse.firstName} {nurse.lastName}</option>
                         ))}
                     </select >
                 </div>
