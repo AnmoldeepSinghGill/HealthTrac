@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 // Define a new 'VitalSign'
 const VitalSignSchema = new Schema({
   pulseRate: Number,
-  bloodPressure: Number,
+  bloodPressure: String,
   weight: Number,
   temperature: Number,
   respiratoryRate: Number,

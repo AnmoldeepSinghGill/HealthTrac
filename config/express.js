@@ -66,6 +66,7 @@ module.exports = function () {
   require("../app/routes/index.server.routes.js")(app);
   require("../app/routes/accounts.server.routes.js")(app);
   require("../app/routes/nurses.server.routes.js")(app);
+  require("../app/routes/patients.server.routes")(app);
   //The express.static() middleware takes one argument
   //to determine the location of the static folder
   //Configure static file serving

@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 import "../../App.css";
 
@@ -26,6 +27,7 @@ const PatientDashboard = (props) => {
                     </div>
                 </div>
             </div>
+            <Link to="/patient/vitalsign">Add Vital Signs</Link>
         </div>
     );
 };
