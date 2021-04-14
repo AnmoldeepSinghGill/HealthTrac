@@ -445,3 +445,18 @@ table th {
   margin-right:2%;
 }
 
+.card-container {
+  border-radius: 5px;
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 50px;
+  padding: 22px;
+  background-color: #f1f1f1;
+  box-shadow: 0 4px 8px 0 #00000033;
+}
+
+.card-container:hover {
+  box-shadow: 0 8px 16px 0 #00000033;
+}
+
+
