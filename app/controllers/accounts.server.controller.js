@@ -37,7 +37,7 @@ exports.createAccount = async (req, res) => {
 		if (accountType === 'PATIENT') {
 			let patient = new Patient();
 			patient.account = newAccount;
-			patient.nurse = new mongoose.Schema.Types.ObjectId(nurseId);
+			patient.nurse = new mongoose.Types.ObjectId(nurseId);
 			await patient.save();
 		} else {
 			let nurse = new Nurse();
