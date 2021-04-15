@@ -76,3 +76,25 @@ exports.getPatientById = (req, res, next, id) => {
         }
     });
 }
+
+exports.getLatestMotivationalTip = (req, res) => {
+    console.log(req.user);
+
+    Patient.findOne({account: req.user.id}, (err, patient) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send({ message: 'Server Error', err: err}).end();
+        } else {
+            if (patient) {
+                console.log(patient);
+                if (patient.motivationalTips.length !== 0) {
+                    res.status(200).send(patient.motivationalTips[patient.motivationalTips.length - 1]);
+                } else {
+                    res.status(200).send(null);
+                }
+            } else {
+                res.status(404).send({message:"patient not found"}).end();
+            }
+        }
+    }).populate('motivationalTips');
+}

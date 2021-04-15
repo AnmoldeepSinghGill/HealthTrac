@@ -10,4 +10,6 @@ module.exports = (app) => {
 
     app.param("patientId", patientController.getPatientByIdDetail);
     app.param("patId", patientController.getPatientById);
+
+    app.get("/api/getLatestMotivationalTip", auth, patientController.getLatestMotivationalTip);
 }
