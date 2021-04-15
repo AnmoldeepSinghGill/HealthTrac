@@ -459,4 +459,18 @@ table th {
   box-shadow: 0 8px 16px 0 #00000033;
 }
 
+.card-child {
+  border-radius: 5px;
+  margin: auto;
+  margin-top: 50px;
+  padding: 22px;
+  background-color: #f1f1f1;
+  box-shadow: 0 4px 8px 0 #00000033;
+  max-width: 50%;
+}
+
+.label-bold {
+  font-weight: bold;
+}
+
 
