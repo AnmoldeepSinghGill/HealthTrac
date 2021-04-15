@@ -7,6 +7,12 @@ import {
 
 export default (state, action) => {
     switch(action.type) {
+        case GET_VITALSIGNS:
+            return {
+                ...state,
+                vitalSigns: action.payload,
+                loading: false
+            }
         case ADD_VITALSIGN:
             return {
                 ...state,

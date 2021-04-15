@@ -74,7 +74,7 @@ function App() {
                   <PrivateRoute exact path='/' component={Home} />
                   <Route exact path='/login' component={Login} />
                   <Route exact path='/register' component={Register} />
-                  <Route exact path='/patient/vitalsign' component={PatientVitalSign} />
+                  <PrivateRoute exact path='/patient/vitalsign' component={PatientVitalSign} />
                 </Switch>
               </div>
             </Fragment>
