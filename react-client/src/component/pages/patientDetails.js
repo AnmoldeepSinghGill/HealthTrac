@@ -49,16 +49,23 @@ const PatientDetails = (props) => {
     return (
         <div>
             <div className="card-container">
-            {/*    <div className="container-fluid">*/}
+                <div className="container-fluid">
                     <div className="row justify-content-center">
                         <h2>Patients Details</h2>
                     </div>
+                    <div style={{fontSize: "22px"}}>
                     <div className="row">
+                        <div className="col-2">
+
+                        </div>
                         <div className="col-4 text-right label-bold">
                             Name
                         </div>
                         <div className="col-4">
                             {patientDetails.firstName} {patientDetails.lastName}
+                        </div>
+                        <div className="col-2">
+
                         </div>
                     </div>
                     <div className="row">
@@ -93,6 +100,7 @@ const PatientDetails = (props) => {
                             {patientDetails.phoneNumber}
                         </div>
                     </div>
+                    </div>
                     <div className="row">
                         <div className="col-6">
                             <PatientMotivationalTips tips={motivationalTips}/>
@@ -104,7 +112,7 @@ const PatientDetails = (props) => {
                 <div className="row">
                         <PatientClinicalData clinicalData={clinicalData}/>
                 </div>
-                {/*</div>*/}
+                </div>
             </div>
         </div>
     );

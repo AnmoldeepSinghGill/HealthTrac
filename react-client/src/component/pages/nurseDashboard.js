@@ -38,7 +38,9 @@ const NurseDashboard = (props) => {
                         <h2>Patients List</h2>
                     </div>
                     <div className="row justify-content-center">
-                        <table className="table table-responsive">
+                        <table className="table table-responsive" style={{left: "20%",
+                            position: "relative"
+                        }}>
                             <thead>
                             <tr>
                                 <th>Name</th>
@@ -46,6 +48,7 @@ const NurseDashboard = (props) => {
                                 <th>Address</th>
                                 <th>City</th>
                                 <th>Phone Number</th>
+                                <th>Actions</th>
                             </tr>
                             {patientsList.map((patient, idx) => (
                                 <tr key={idx}>

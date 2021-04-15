@@ -9,20 +9,29 @@ const PatientVitalSigns = (props) => {
         console.log(props.vitalSigns);
     }, []);
 
+    const onAddNewClick = () => {
+        props.history.push({pathname: "/addPatientVitalSigns", id: props.location.id});
+    }
+
     return (
         <div className="card-child">
             <div className="row justify-content-center">
                 <h2>Patients Vital Signs</h2>
             </div>
+            <div className="row justify-content-end row-padding">
+                    <button className="btn btn-success" onClick={onAddNewClick}>Add New</button>
+            </div>
             {props.vitalSigns && props.vitalSigns.length !== 0 ? (
-                <div className="row justify-content-center">
+                <div className="row justify-content-center row-padding">
                     <table className="table table-bordered">
                         <thead>
+                        <tr>
                             <th>Pulse Rate</th>
                             <th>Blood Pressure</th>
                             <th>Weight</th>
                             <th>Temperature</th>
                             <th>Respiratory Rate</th>
+                        </tr>
                         </thead>
                         <tbody>
                         {props.vitalSigns.map((sign, idx) => (
