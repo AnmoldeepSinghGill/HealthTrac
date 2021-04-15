@@ -21,6 +21,21 @@ const PatientState = props => {
     const [ state, dispatch ] = useReducer(PatientReducer, initialState);
 
     // Get vitalSigns
+    const getVitalSigns = async () => {
+        try {
+            const res = await axios.get('http://localhost:3000/api/patient');
+
+            dispatch({
+                type: GET_VITALSIGNS,
+                payload: res.data
+            });
+
+        } catch (err) {
+            dispatch({
+                type:  VITALSIGN_ERROR,
+                payload: err.response.data.msg
+            });
+        }};
 
     // Add vitalsign
     const addVitalSign = async (vitalSign) => {
@@ -40,7 +55,7 @@ const PatientState = props => {
             dispatch({
                 type: VITALSIGN_ERROR,
                 payload: err.response.data.msg
-            })
+            });
         }
     }
 
@@ -59,7 +74,8 @@ const PatientState = props => {
                 error1: state.error,
                 vitalSignAdded: state.vitalSignAdded,
                 addVitalSign,
-                clearErrors
+                clearErrors,
+                getVitalSigns
             }}
         >
             {props.children}
