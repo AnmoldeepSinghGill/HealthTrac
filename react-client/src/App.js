@@ -29,6 +29,9 @@ import Login from './component/auth/Login';
 import ListCourses from './components/ListCourses';
 import PatientDetails from "./component/pages/patientDetails";
 import AddPatientClinicalData from "./component/pages/addPatientClinicalData";
+import AddPatientMotivationalTip from "./component/pages/addPatientMotivationalTip";
+import AddPatientVitalSign from "./component/pages/addPatientVitalSign";
+import AddExistingPatientMotivationalTip from "./component/pages/existingMotivationalTips";
 //
 
 if (sessionStorage.token) {
@@ -76,11 +79,13 @@ function App() {
                   <PrivateRoute exact path='/' component={Home} />
                   <PrivateRoute exact path='/showDetails' component={PatientDetails} />
                   <PrivateRoute exact path='/addPatientClinicalData' component={AddPatientClinicalData} />
+                  <PrivateRoute exact path='/addPatientMotivationalTip' component={AddPatientMotivationalTip} />
+                  <PrivateRoute exact path='/addExistingPatientMotivationalTip' component={AddExistingPatientMotivationalTip} />
+                  <PrivateRoute exact path='/addPatientVitalSigns' component={AddPatientVitalSign} />
                   <Route exact path='/login' component={Login} />
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/patient/vitalsign' component={PatientVitalSign} />
                 </Switch>
-                
               </div>
             </Fragment>
           </Router>

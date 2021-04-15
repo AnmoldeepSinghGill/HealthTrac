@@ -1,0 +1,5 @@
+{
+  "ignore": ["./react-clint", ".git", "node_modules"],
+  "watch": ["app"],
+  "ext": "js"
+}

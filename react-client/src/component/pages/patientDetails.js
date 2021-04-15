@@ -53,6 +53,7 @@ const PatientDetails = (props) => {
                     <div className="row justify-content-center">
                         <h2>Patients Details</h2>
                     </div>
+                    <div style={{fontSize: "22px"}}>
                     <div className="row">
                         <div className="col-2">
 
@@ -98,6 +99,7 @@ const PatientDetails = (props) => {
                         <div className="col-6">
                             {patientDetails.phoneNumber}
                         </div>
+                    </div>
                     </div>
                     <div className="row">
                         <div className="col-6">
