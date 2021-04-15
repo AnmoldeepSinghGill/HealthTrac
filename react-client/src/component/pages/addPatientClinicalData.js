@@ -61,7 +61,7 @@ const AddPatientClinicalData = (props) => {
         <div>
             <div className="card-container">
                 <div className="row justify-content-center">
-                <div>Add Clinical Data for Patient</div>
+                <h2>Add Clinical Data for Patient</h2>
                 </div>
                 <Form className="register-form" onSubmit={handleOnSubmit}>
                     <Form.Group controlId="age">

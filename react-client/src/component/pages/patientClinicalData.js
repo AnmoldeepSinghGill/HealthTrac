@@ -14,15 +14,18 @@ const PatientClinicalData = (props) => {
     }
 
     return (
-        <div className="card-child">
+        <div className="card-clinical">
             <div className="row justify-content-center">
                 <h2>Patients Clinical Data</h2>
+            </div>
+            <div className="row justify-content-end">
                 <button className="btn btn-success" onClick={onAddNewClick}>Add New Clinical Data</button>
             </div>
             {props.clinicalData && props.clinicalData.length !== 0 ? (
-                <div className="row justify-content-center">
-                    <table className="table table-bordered">
+                <div className="row justify-content-center row-padding">
+                    <table className="table table-bordered table-responsive">
                         <thead>
+                        <tr>
                         <th>Age</th>
                         <th>Sex</th>
                         <th>CP</th>
@@ -38,6 +41,7 @@ const PatientClinicalData = (props) => {
                         <th>thal</th>
                         <th>riskCategory</th>
                         <th>Created On</th>
+                        </tr>
                         </thead>
                         <tbody>
                         {props.clinicalData.map((data, idx) => (

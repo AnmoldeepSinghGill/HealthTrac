@@ -69,7 +69,7 @@ function App() {
           <Router>
             <Fragment>
               <Navbar />
-              <div className="container">
+              <div className="container" style={{maxWidth: "1200px"}}>
                 <Alert />
                 <Switch>
                   {/* Use PrivateRoute for private access components */}
@@ -80,6 +80,7 @@ function App() {
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/patient/vitalsign' component={PatientVitalSign} />
                 </Switch>
+                
               </div>
             </Fragment>
           </Router>

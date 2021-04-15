@@ -18,11 +18,13 @@ const PatientVitalSigns = (props) => {
                 <div className="row justify-content-center">
                     <table className="table table-bordered">
                         <thead>
+                        <tr>
                             <th>Pulse Rate</th>
                             <th>Blood Pressure</th>
                             <th>Weight</th>
                             <th>Temperature</th>
                             <th>Respiratory Rate</th>
+                        </tr>
                         </thead>
                         <tbody>
                         {props.vitalSigns.map((sign, idx) => (
