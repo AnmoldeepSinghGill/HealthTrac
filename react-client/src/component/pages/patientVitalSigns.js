@@ -1,0 +1,50 @@
+import {useContext, useEffect, useState} from 'react';
+import AuthContext from '../../context/auth/authContext';
+import "../../App.css";
+import {withRouter} from "react-router-dom";
+
+const PatientVitalSigns = (props) => {
+
+    useEffect(() => {
+        console.log(props.vitalSigns);
+    }, []);
+
+    return (
+        <div className="card-child">
+            <div className="row justify-content-center">
+                <h2>Patients Vital Signs</h2>
+            </div>
+            {props.vitalSigns && props.vitalSigns.length !== 0 ? (
+                <div className="row justify-content-center">
+                    <table className="table table-bordered">
+                        <thead>
+                            <th>Pulse Rate</th>
+                            <th>Blood Pressure</th>
+                            <th>Weight</th>
+                            <th>Temperature</th>
+                            <th>Respiratory Rate</th>
+                        </thead>
+                        <tbody>
+                        {props.vitalSigns.map((sign, idx) => (
+                            <tr key={idx}>
+                                <td>{sign.pulseRate}</td>
+                                <td>{sign.bloodPressure}</td>
+                                <td>{sign.weight}</td>
+                                <td>{sign.temperature}</td>
+                                <td>{sign.respiratoryRate}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+            ) : (
+                <div className="row justify-content-center">
+                    <h4>No Data Present</h4>
+                </div>
+            )}
+
+        </div>
+    );
+};
+
+export default withRouter(PatientVitalSigns);

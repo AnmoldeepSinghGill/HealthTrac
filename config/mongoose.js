@@ -23,6 +23,7 @@ module.exports = function () {
   require("../app/models/motivationalTip.server.model");
   require("../app/models/vitalSign.server.model");
   require("../app/models/patient.server.model");
+  require("../app/models/clinicalData.server.model");
   // Return the Mongoose connection instance
   return db;
 };

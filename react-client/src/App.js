@@ -27,6 +27,8 @@ import ShowArticle from './components/ShowArticle';
 import Home from './component/pages/Home';
 import Login from './component/auth/Login';
 import ListCourses from './components/ListCourses';
+import PatientDetails from "./component/pages/patientDetails";
+import AddPatientClinicalData from "./component/pages/addPatientClinicalData";
 //
 
 if (sessionStorage.token) {
@@ -72,6 +74,8 @@ function App() {
                 <Switch>
                   {/* Use PrivateRoute for private access components */}
                   <PrivateRoute exact path='/' component={Home} />
+                  <PrivateRoute exact path='/showDetails' component={PatientDetails} />
+                  <PrivateRoute exact path='/addPatientClinicalData' component={AddPatientClinicalData} />
                   <Route exact path='/login' component={Login} />
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/patient/vitalsign' component={PatientVitalSign} />

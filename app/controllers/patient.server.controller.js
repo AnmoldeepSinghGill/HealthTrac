@@ -37,3 +37,42 @@ exports.createVitalSigns = async (req, res) => {
         res.status(500).send('Server Error');
     }
 }
+
+exports.getPatientDetailsById = (req, res) => {
+    console.log(req.patient);
+    res.status(200).send(req.patient);
+}
+
+exports.getPatientByIdDetail = (req, res, next, id) => {
+    console.log("middleware called");
+    Patient.findById(id, (err, patient) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send({ message: 'Server Error', err: err}).end();
+        } else {
+            if (patient) {
+                req.patient = patient;
+                next();
+            } else {
+                res.status(404).send({message:"patient not found"}).end();
+            }
+        }
+    }).populate(['account', 'vitalSigns', 'emergencyAlerts', 'motivationalTips', 'nurse', 'clinicalData']);
+}
+
+exports.getPatientById = (req, res, next, id) => {
+    console.log("middleware called");
+    Patient.findById(id, (err, patient) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send({ message: 'Server Error', err: err}).end();
+        } else {
+            if (patient) {
+                req.patient = patient;
+                next();
+            } else {
+                res.status(404).send({message:"patient not found"}).end();
+            }
+        }
+    });
+}
