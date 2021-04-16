@@ -27,6 +27,7 @@ import AddPatientMotivationalTip from "./component/pages/addPatientMotivationalT
 import AddPatientVitalSign from "./component/pages/addPatientVitalSign";
 import AddExistingPatientMotivationalTip from "./component/pages/existingMotivationalTips";
 import RiskRateResults from "./component/pages/riskRateResult";
+import SendEmergencyAlert from "./component/pages/sendEmergencyAlert";
 //
 
 if (sessionStorage.token) {
@@ -67,7 +68,7 @@ function App() {
           <Router>
             <Fragment>
               <Navbar />
-              <div className="container" style={{maxWidth: "1200px"}}>
+              <div className="container" style={{maxWidth: "1300px"}}>
                 <Alert />
                 <Switch>
                   {/* Use PrivateRoute for private access components */}
@@ -78,6 +79,7 @@ function App() {
                   <PrivateRoute exact path='/addExistingPatientMotivationalTip' component={AddExistingPatientMotivationalTip} />
                   <PrivateRoute exact path='/addPatientVitalSigns' component={AddPatientVitalSign} />
                   <PrivateRoute exact path='/riskRateResult' component={RiskRateResults} />
+                  <PrivateRoute exact path='/patient/sendEmergencyAlert' component={SendEmergencyAlert} />
                   <Route exact path='/login' component={Login} />
                   <Route exact path='/register' component={Register} />
                   <PrivateRoute exact path='/patient/vitalsign' component={PatientVitalSign} />

@@ -59,7 +59,7 @@ const Register = () => {
     }
 
     const onChangeNurseId = (e) => {
-        setNurseId({...nurseId, [e.target.name]: e.target.value });
+        setNurseId(e.target.value);
     }
 
     const getAllNurses = async () => {

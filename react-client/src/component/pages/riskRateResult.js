@@ -2,22 +2,30 @@ import {useContext, useEffect, useState} from 'react';
 import AuthContext from '../../context/auth/authContext';
 import "../../App.css";
 import {withRouter} from "react-router-dom";
-import {buildStyles, CircularProgressbar} from 'react-circular-progressbar';
+import {buildStyles, CircularProgressbar, CircularProgressbarWithChildren} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import ChangingProgressProvider from "./ChangingProgressProvider";
 import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
+import RadialSeparators from "./circular-progress-bar/RadialSeparator";
 
 const RiskRateResults = (props) => {
     const authContext = useContext(AuthContext);
     const { loadUser } = authContext;
     const [loading, setLoading] = useState(true);
     const [riskCategory, setRiskCategory] = useState(0);
+    const [textColour, setTextColour] = useState('blue');
+    const [riskText, setRiskText] = useState('');
+    const [progressStyles, setProgressStyles] = useState({
+        strokeLinecap: "butt",
+        textColor: {textColour},
+        trailColor: {textColour}
+    });
     const trainUrl = "http://localhost:3000/run";
 
     useEffect(() => {
         loadUser();
         console.log(props.location.data);
+        console.log(props.location.id);
         getPatientCategory();
     }, []);
 
@@ -35,6 +43,7 @@ const RiskRateResults = (props) => {
             }
 
             setRiskCategory(category);
+            determineTextColor(category);
             console.log(category);
         }).catch(err => {
             setLoading(false);
@@ -42,30 +51,75 @@ const RiskRateResults = (props) => {
         })
     }
 
-    const onAddNewClick = () => {
-        props.history.push({pathname: "/addPatientVitalSigns", id: props.location.id});
+    const backToDetails = () => {
+        if (props.location.id) {
+            props.history.push({pathname: "/showDetails", id : props.location.id});
+        } else {
+            props.history.push({pathname: "/"});
+        }
+    }
+
+    const determineTextColor = (category) => {
+        switch (category) {
+            case 0:
+                setTextColour("#00FF00");
+                setRiskText("Very Low Risk");
+                break;
+            case 1:
+                setTextColour("#CCCC00");
+                setRiskText("Low Risk");
+                break;
+            case 2:
+                setTextColour("#CCCC00");
+                setRiskText("Moderate Risk");
+                break;
+            case 3:
+                setTextColour("#FF0000");
+                setRiskText("High Risk");
+                break;
+            case 4:
+                setTextColour("#FF0000");
+                setRiskText("Very High Risk");
+                break;
+            default:
+                setTextColour("blue");
+        }
+        setProgressStyles({
+            strokeLinecap: "butt",
+            textColor: {textColour},
+            trailColor: {textColour}
+        })
     }
 
     return (
         <div className="card-container">
             <div className="row justify-content-center">
-                <h2>Patient's <span className="text-primary">Risk Rate</span></h2>
+                <h2>Patient's <span className="text-danger">Heart Attack Risk Rate</span></h2>
             </div>
             <div className="row row-padding">
-                <div className="col-6 text-center">
-                    <ChangingProgressProvider values={[0, 20, 40, 60, 80, 100]}>
-                        {percentage => (
-                            <CircularProgressbar
-                                value={percentage}
-                                text={`${percentage}%`}
-                                styles={buildStyles({
-                                    textColor: "blue",
-                                    pathColor: "green"
-                                })}
-                                className="progress-bar-custom"
-                            />
-                        )}
-                    </ChangingProgressProvider>
+                <div className="col-6 text-center" style={{left: "15%"}}>
+                    <div className="progress-bar-custom">
+                    <CircularProgressbarWithChildren
+                        value={riskCategory}
+                        text={`${riskCategory}`}
+                        minValue={0}
+                        maxValue={4}
+                        strokeWidth={5}
+                        styles={buildStyles({
+                            progressStyles
+                        })}
+                        key={textColour}
+                    >
+                        <RadialSeparators
+                            count={4}
+                            style={{
+                                background: "#fff",
+                                width: "10px",
+                                height: `${5}%`
+                            }}
+                        />
+                    </CircularProgressbarWithChildren>
+                    </div>
                 </div>
                 <div className="col-6 text-center">
                     {loading && (
@@ -75,7 +129,11 @@ const RiskRateResults = (props) => {
                     )}
                     <h2>Risk Category</h2>
                     <h3>{riskCategory}</h3>
+                    <h3 style={{color: textColour}}>{riskText}</h3>
                 </div>
+            </div>
+            <div className="row justify-content-center row-padding">
+                <button className="btn btn-primary" onClick={backToDetails}>Go Back To Details</button>
             </div>
         </div>
     );
