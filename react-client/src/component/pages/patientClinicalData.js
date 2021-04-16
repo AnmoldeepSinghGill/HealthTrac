@@ -7,6 +7,7 @@ const PatientClinicalData = (props) => {
 
     useEffect(() => {
         console.log(props.clinicalData);
+        console.log(props.id);
     }, []);
 
     const onAddNewClick = () => {
@@ -14,11 +15,11 @@ const PatientClinicalData = (props) => {
     }
 
     const checkRiskRate = (data) => {
-        props.history.push({pathname: "/riskRateResult", data: data});
+        props.history.push({pathname: "/riskRateResult", data: data, id: props.id});
     }
 
     return (
-        <div className="card-clinical">
+        <div className="card-clinical" style={{ minWidth: "1000px"}}>
             <div className="row justify-content-center">
                 <h2>Patients <span className="text-primary">Clinical Data</span></h2>
             </div>
