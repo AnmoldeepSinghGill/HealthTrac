@@ -13,13 +13,22 @@ const PatientClinicalData = (props) => {
         props.history.push({pathname: "/addPatientClinicalData", id: props.location.id});
     }
 
+    const checkRiskRate = (data) => {
+        props.history.push({pathname: "/riskRateResult", data: data});
+    }
+
     return (
         <div className="card-clinical">
             <div className="row justify-content-center">
-                <h2>Patients Clinical Data</h2>
+                <h2>Patients <span className="text-primary">Clinical Data</span></h2>
             </div>
-            <div className="row justify-content-end">
-                <button className="btn btn-success" onClick={onAddNewClick}>Add New Clinical Data</button>
+            <div className="row justify-content-end text-right">
+                <div className="col-5">
+                    <button className="btn btn-primary" onClick={checkRiskRate}>Check Heart Attack Risk</button>
+                </div>
+                <div className="col-3 text-right">
+                    <button className="btn btn-primary" onClick={onAddNewClick}>Add New Clinical Data</button>
+                </div>
             </div>
             {props.clinicalData && props.clinicalData.length !== 0 ? (
                 <div className="row justify-content-center row-padding">
@@ -39,8 +48,8 @@ const PatientClinicalData = (props) => {
                         <th>slope</th>
                         <th>ca</th>
                         <th>thal</th>
-                        <th>riskCategory</th>
                         <th>Created On</th>
+                        <th>Check Risk</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -59,8 +68,8 @@ const PatientClinicalData = (props) => {
                                 <td>{data.slope}</td>
                                 <td>{data.ca}</td>
                                 <td>{data.thal}</td>
-                                <td>{data.riskCategory}</td>
                                 <td>{data.createdOn}</td>
+                                <td><button className="btn btn-primary" onClick={() => {checkRiskRate(data)}}>Check Risk</button></td>
                             </tr>
                         ))}
                         </tbody>

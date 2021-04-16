@@ -32,6 +32,7 @@ import AddPatientClinicalData from "./component/pages/addPatientClinicalData";
 import AddPatientMotivationalTip from "./component/pages/addPatientMotivationalTip";
 import AddPatientVitalSign from "./component/pages/addPatientVitalSign";
 import AddExistingPatientMotivationalTip from "./component/pages/existingMotivationalTips";
+import RiskRateResults from "./component/pages/riskRateResult";
 //
 
 if (sessionStorage.token) {
@@ -82,6 +83,7 @@ function App() {
                   <PrivateRoute exact path='/addPatientMotivationalTip' component={AddPatientMotivationalTip} />
                   <PrivateRoute exact path='/addExistingPatientMotivationalTip' component={AddExistingPatientMotivationalTip} />
                   <PrivateRoute exact path='/addPatientVitalSigns' component={AddPatientVitalSign} />
+                  <PrivateRoute exact path='/riskRateResult' component={RiskRateResults} />
                   <Route exact path='/login' component={Login} />
                   <Route exact path='/register' component={Register} />
                   <PrivateRoute exact path='/patient/vitalsign' component={PatientVitalSign} />
