@@ -485,4 +485,14 @@ table th {
   margin-top: 15px;
 }
 
+.row-title {
+  border-bottom: #a5c8ef 2px solid;
+  margin-right: 10px !important;
+  margin-left: 10px !important;
+}
+
+.progress-bar-custom {
+  width: 50% !important;
+}
+
 

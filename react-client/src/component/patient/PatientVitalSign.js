@@ -61,42 +61,36 @@ const PatientVitalSign = () => {
     }
 
     return (
-        <div className='form-container'>
+        <div className='form-container card-container'>
             <h1>
                 Enter <span className="text-primary">Vital Signs</span>
             </h1>
-            <form onSubmit={onSubmit} >
+            <div className="row justify-content-center">
+            <form onSubmit={onSubmit} style={{width: "50%"}}>
                 <div className="form-group">
                     <label htmlFor="pulseRate">Pulse Rate</label>
-                    <input className='w3-input w3-border' type="number" name='pulseRate' value={pulseRate} onChange={onChange} required/>
+                    <input className='form-control' type="number" name='pulseRate' value={pulseRate} onChange={onChange} required/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="bloodPressure">Blood Pressure</label>
-                    <input className='w3-input w3-border' type="text" name='bloodPressure' value={bloodPressure} onChange={onChange} required/>
+                    <input className='form-control' type="text" name='bloodPressure' value={bloodPressure} onChange={onChange} required/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="weight">Weight</label>
-                    <input className='w3-input w3-border' type="number" name='weight' value={weight} onChange={onChange} required/>
+                    <input className='form-control' type="number" name='weight' value={weight} onChange={onChange} required/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="respiratoryRate">Respiratory Rate</label>
-                    <input className='w3-input w3-border' type="number" name='respiratoryRate' value={respiratoryRate} onChange={onChange} minLength='6' required/>
+                    <input className='form-control' type="number" name='respiratoryRate' value={respiratoryRate} onChange={onChange} minLength='6' required/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="temperature">Temperature</label>
-                    <input className='w3-input w3-border' type="number" name='temperature' value={temperature} onChange={onChange} minLength='6' required/>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="createdBy">Created By</label>
-                    <select className='w3-select w3-border' name="createdBy" onChange={onChange} value={createdBy} required>
-                        <option key={1} value=''></option>
-                        <option key={2} value='PATIENT'>Patient</option>
-                        <option key={3} value='NURSE'>Nurse</option>
-                    </select >
+                    <input className='form-control' type="number" name='temperature' value={temperature} onChange={onChange} minLength='6' required/>
                 </div>
                 
                 <input type="submit" value="Add Vital Sign" className='btn btn-primary btn-block' />
             </form>
+            </div>
         </div>
     );
 };

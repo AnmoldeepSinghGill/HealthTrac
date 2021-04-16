@@ -20,14 +20,14 @@ const PatientMotivationalTips = (props) => {
     return (
             <div className="card-child">
                     <div className="row justify-content-center">
-                        <h2>Patients Motivational Tip</h2>
+                        <h2>Patients <span className="text-primary">Motivational Tip</span></h2>
                     </div>
                 <div className="row justify-content-end row-padding">
                     <div className="col-5">
-                        <button className="btn btn-success" onClick={onExistingClick}>Select From Existing</button>
+                        <button className="btn btn-primary" onClick={onExistingClick}>Select From Existing</button>
                     </div>
                     <div className="col-3">
-                        <button className="btn btn-success" onClick={onAddNewClick}>Add New</button>
+                        <button className="btn btn-primary" onClick={onAddNewClick}>Add New</button>
                     </div>
                 </div>
                 {props.tips && props.tips.length !== 0 ? (

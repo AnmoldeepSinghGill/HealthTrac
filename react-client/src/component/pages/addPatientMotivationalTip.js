@@ -49,7 +49,7 @@ const AddPatientMotivationalTip = (props) => {
         <div>
             <div className="card-container">
                 <div className="row justify-content-center">
-                    <h2>Add Motivational Tip for Patient</h2>
+                    <h2><span className="text-primary">Add Motivational Tip</span> for Patient</h2>
                 </div>
                 <Form className="register-form" onSubmit={handleOnSubmit}>
                     <Form.Group controlId="age">
@@ -64,7 +64,7 @@ const AddPatientMotivationalTip = (props) => {
                         />
                     </Form.Group>
                     <div className="row justify-content-center">
-                        <Button variant="success" type="submit">
+                        <Button variant="primary" type="submit">
                             SAVE
                         </Button>
                     </div>

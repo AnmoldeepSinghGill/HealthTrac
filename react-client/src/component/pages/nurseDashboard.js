@@ -31,16 +31,16 @@ const NurseDashboard = (props) => {
 
     return (
         <div>
-            <h1>Nurse Dashboard</h1>
-            <div className="card-container">
-                <div className="container-fluid">
-                    <div className="row justify-content-center">
-                        <h2>Patients List</h2>
+            <div className="card-container container-fluid">
+                <div className="row justify-content-center row-title">
+                    <h1>Nurse <span className="text-primary">Dashboard</span></h1>
+                </div>
+                    <div className="row justify-content-center row-padding">
+                        <h2>Patients <span className="text-primary">List</span></h2>
                     </div>
-                    <div className="row justify-content-center">
-                        <table className="table table-responsive" style={{left: "20%",
-                            position: "relative"
-                        }}>
+                    <div className="row justify-content-center row-padding">
+                        <div className="col-auto">
+                        <table className="table table-responsive" >
                             <thead>
                             <tr>
                                 <th>Name</th>
@@ -57,16 +57,16 @@ const NurseDashboard = (props) => {
                                 <td>{patient.account.address}</td>
                                 <td>{patient.account.city}</td>
                                 <td>{patient.account.phoneNumber}</td>
-                                <td><button className="btn btn-success" onClick={() => {handleViewVitals(patient.id)}}>
+                                <td><button className="btn btn-primary" onClick={() => {handleViewVitals(patient.id)}}>
                                     View Details
                                 </button></td>
                                 </tr>
                             ))}
                             </thead>
                         </table>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
     );
 };
