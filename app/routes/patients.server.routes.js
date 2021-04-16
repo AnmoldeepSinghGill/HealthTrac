@@ -8,6 +8,8 @@ module.exports = (app) => {
 
     app.get("/api/patientDetails/:patientId", auth, patientController.getPatientDetailsById);
 
+    app.post("/api/sendEmergencyAlert", auth, patientController.sendEmergencyAlert);
+
     app.param("patientId", patientController.getPatientByIdDetail);
     app.param("patId", patientController.getPatientById);
 

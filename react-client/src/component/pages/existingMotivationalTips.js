@@ -76,11 +76,11 @@ const AddExistingPatientMotivationalTip = (props) => {
         <div>
             <div className="card-container">
                 <div className="row justify-content-center">
-                    <h2>Select From Existing Motivational Tip for Patient</h2>
+                    <h2>Select From <span className="text-primary">Existing Motivational Tip</span> for Patient</h2>
                 </div>
                 <Form className="register-form" onSubmit={handleOnSubmit}>
                     <Form.Group controlId="age">
-                        <Form.Label>Video Link</Form.Label>
+                        <Form.Label style={{fontWeight: "bold"}}>Video Link</Form.Label>
                         <select onChange={onChange} name="link" className="form-control">
                             {motivationalTips.map((tip, idx) => (
                                 <option key={idx} value={tip.id}>
@@ -100,9 +100,9 @@ const AddExistingPatientMotivationalTip = (props) => {
                         </div>
                     )}
 
-                    <div className="row justify-content-center">
-                        <Button variant="success" type="submit">
-                            SAVE
+                    <div className="row justify-content-center row-padding">
+                        <Button variant="primary" type="submit">
+                            Save
                         </Button>
                     </div>
                 </Form>

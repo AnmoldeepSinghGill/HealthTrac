@@ -1,5 +1,6 @@
 const Patient = require('mongoose').model('Patient');
 const VitalSign = require('mongoose').model('VitalSign');
+const EmergencyAlert = require('mongoose').model('EmergencyAlert');
 const ObjectId = require('mongodb');
 
 exports.getPatient = async (req, res) => {
@@ -97,4 +98,40 @@ exports.getLatestMotivationalTip = (req, res) => {
             }
         }
     }).populate('motivationalTips');
+}
+
+exports.sendEmergencyAlert = async (req, res) => {
+
+    Patient.findOne({account: req.user.id}, (err, patient) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send({ message: 'Server Error', err: err}).end();
+        } else {
+            if (patient) {
+                let emergencyAlert = new EmergencyAlert(req.body);
+
+                emergencyAlert.save((err, alert) => {
+                    if (err) {
+                        res.status(500).send({msg: 'server error', err: err}).end();
+                    } else {
+                        if (alert) {
+                            console.log(patient.emergencyAlerts);
+                            patient.emergencyAlerts.push(alert);
+                            Patient.findByIdAndUpdate(patient._id, patient, (err, pat) => {
+                                if (err) {
+                                    res.status(500).send({msg: 'server error', err: err}).end();
+                                } else {
+                                    res.status(200).send({msg: 'successfully added alert', patient: pat});
+                                }
+                            })
+                        } else {
+                            res.status(500).send({msg: 'server error clinical data not creates'}).end();
+                        }
+                    }
+                });
+            } else {
+                res.status(404).send({message:"patient not found"}).end();
+            }
+        }
+    }).populate('emergencyAlerts');
 }

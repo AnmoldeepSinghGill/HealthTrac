@@ -16,22 +16,18 @@ import PatientState from './context/patient/PatientState';
 import Nav from 'react-bootstrap/Nav';
 import './App.css';
 //
-import List from './components/List';
-import EditStudent from './components/EditStudent';
-import EditArticle from './components/EditArticle';
 
-import CreateAccount from './components/CreateAccount';
-import ShowUser from './components/ShowStudent';
-import ShowArticle from './components/ShowArticle';
 
 import Home from './component/pages/Home';
 import Login from './component/auth/Login';
-import ListCourses from './components/ListCourses';
+import SymptomCheck from './component/pages/symptomCheck';
 import PatientDetails from "./component/pages/patientDetails";
 import AddPatientClinicalData from "./component/pages/addPatientClinicalData";
 import AddPatientMotivationalTip from "./component/pages/addPatientMotivationalTip";
 import AddPatientVitalSign from "./component/pages/addPatientVitalSign";
 import AddExistingPatientMotivationalTip from "./component/pages/existingMotivationalTips";
+import RiskRateResults from "./component/pages/riskRateResult";
+import SendEmergencyAlert from "./component/pages/sendEmergencyAlert";
 //
 
 if (sessionStorage.token) {
@@ -72,7 +68,7 @@ function App() {
           <Router>
             <Fragment>
               <Navbar />
-              <div className="container" style={{maxWidth: "1200px"}}>
+              <div className="container" style={{maxWidth: "1300px"}}>
                 <Alert />
                 <Switch>
                   {/* Use PrivateRoute for private access components */}
@@ -82,9 +78,12 @@ function App() {
                   <PrivateRoute exact path='/addPatientMotivationalTip' component={AddPatientMotivationalTip} />
                   <PrivateRoute exact path='/addExistingPatientMotivationalTip' component={AddExistingPatientMotivationalTip} />
                   <PrivateRoute exact path='/addPatientVitalSigns' component={AddPatientVitalSign} />
+                  <PrivateRoute exact path='/riskRateResult' component={RiskRateResults} />
+                  <PrivateRoute exact path='/patient/sendEmergencyAlert' component={SendEmergencyAlert} />
                   <Route exact path='/login' component={Login} />
                   <Route exact path='/register' component={Register} />
                   <PrivateRoute exact path='/patient/vitalsign' component={PatientVitalSign} />
+                  <PrivateRoute exact path ='/patient/symptoms' component={SymptomCheck}/>
                 </Switch>
               </div>
             </Fragment>

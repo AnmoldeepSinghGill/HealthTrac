@@ -21,14 +21,33 @@ const AddPatientClinicalData = (props) => {
         slope: 0,
         ca: 0,
         thal: 0,
-        riskCategory: 0,
+        riskCategory:0
+        
     });
     const apiUrl = "http://localhost:3000/api/addClinicalData/";
+    const trainUrl = "http://localhost:3000/run";
 
     useEffect(() => {
         console.log(props.location.id);
         loadUser();
     }, []);
+
+    const getPatientCategory = () => {
+        axios.post(trainUrl,clinicalData).then((result)=>{
+            console.log(result.data.row1);
+            var category =0;
+            var value =0;
+            for(var x =0;x<result.data.row1.length;x++){
+                if(result.data.row1[x]>value){
+                    value = result.data.row1[x];
+                    category = x;
+                }
+            }
+
+           clinicalData.riskCategory = category;
+           console.log(clinicalData.riskCategory);
+        })
+    }
 
     const addPatientClinicalData = async () => {
         if (props.location.id) {
@@ -47,6 +66,7 @@ const AddPatientClinicalData = (props) => {
     const handleOnSubmit = (event) => {
         event.preventDefault();
         if (props.location.id) {
+            getPatientCategory();
             addPatientClinicalData();
         } else {
             props.history.push({pathname: "/"});
@@ -61,9 +81,10 @@ const AddPatientClinicalData = (props) => {
         <div>
             <div className="card-container">
                 <div className="row justify-content-center">
-                <h2>Add Clinical Data for Patient</h2>
+                <h2><span className="text-primary">Add Clinical Data</span> for Patient</h2>
                 </div>
-                <Form className="register-form" onSubmit={handleOnSubmit}>
+                <div className="row justify-content-center">
+                <Form className="register-form" onSubmit={handleOnSubmit} style={{width: "30%"}}>
                     <Form.Group controlId="age">
                         <Form.Label>Age</Form.Label>
                         <Form.Control
@@ -220,24 +241,14 @@ const AddPatientClinicalData = (props) => {
                             required
                         />
                     </Form.Group>
-                    <Form.Group controlId="riskCategory">
-                        <Form.Label>riskCategory</Form.Label>
-                        <Form.Control
-                            type="number"
-                            step="any"
-                            placeholder="Enter riskCategory"
-                            name="riskCategory"
-                            onChange={onChange}
-                            value={clinicalData.riskCategory}
-                            required
-                        />
-                    </Form.Group>
+                
                     <div className="row justify-content-center">
-                        <Button variant="success" type="submit">
+                        <Button variant="primary" type="submit">
                             SAVE
                         </Button>
                     </div>
                     </Form>
+                </div>
             </div>
         </div>
     );
