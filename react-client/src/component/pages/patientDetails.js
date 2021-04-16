@@ -48,10 +48,10 @@ const PatientDetails = (props) => {
 
     return (
         <div>
-            <div className="card-container">
+            <div className="card-container" style={{backgroundColor: "#ececec"}}>
                 <div className="container-fluid">
                     <div className="row justify-content-center">
-                        <h2>Patients Details</h2>
+                        <h2><span className="text-primary">Patients Details</span></h2>
                     </div>
                     <div style={{fontSize: "22px"}}>
                     <div className="row">
