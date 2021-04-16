@@ -52,6 +52,8 @@ const PatientDashboard = (props) => {
                 </div>
             </div>
             <Link to="/patient/vitalsign">Add Vital Signs</Link>
+            <br/>
+            <Link to="/patient/symptoms">Symptom Checker</Link>
         </div>
     );
 };
