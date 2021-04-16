@@ -14,6 +14,7 @@ const RiskRateResults = (props) => {
     const [loading, setLoading] = useState(true);
     const [riskCategory, setRiskCategory] = useState(0);
     const [textColour, setTextColour] = useState('blue');
+    const [riskText, setRiskText] = useState('');
     const [progressStyles, setProgressStyles] = useState({
         strokeLinecap: "butt",
         textColor: {textColour},
@@ -24,6 +25,7 @@ const RiskRateResults = (props) => {
     useEffect(() => {
         loadUser();
         console.log(props.location.data);
+        console.log(props.location.id);
         getPatientCategory();
     }, []);
 
@@ -49,26 +51,35 @@ const RiskRateResults = (props) => {
         })
     }
 
-    const onAddNewClick = () => {
-        props.history.push({pathname: "/addPatientVitalSigns", id: props.location.id});
+    const backToDetails = () => {
+        if (props.location.id) {
+            props.history.push({pathname: "/showDetails", id : props.location.id});
+        } else {
+            props.history.push({pathname: "/"});
+        }
     }
 
     const determineTextColor = (category) => {
         switch (category) {
             case 0:
-                setTextColour("green");
+                setTextColour("#00FF00");
+                setRiskText("Very Low Risk");
                 break;
             case 1:
-                setTextColour("yellow");
+                setTextColour("#CCCC00");
+                setRiskText("Low Risk");
                 break;
             case 2:
-                setTextColour("yellow");
+                setTextColour("#CCCC00");
+                setRiskText("Moderate Risk");
                 break;
             case 3:
-                setTextColour("red");
+                setTextColour("#FF0000");
+                setRiskText("High Risk");
                 break;
             case 4:
-                setTextColour("red");
+                setTextColour("#FF0000");
+                setRiskText("Very High Risk");
                 break;
             default:
                 setTextColour("blue");
@@ -83,7 +94,7 @@ const RiskRateResults = (props) => {
     return (
         <div className="card-container">
             <div className="row justify-content-center">
-                <h2>Patient's <span className="text-primary">Risk Rate</span></h2>
+                <h2>Patient's <span className="text-danger">Heart Attack Risk Rate</span></h2>
             </div>
             <div className="row row-padding">
                 <div className="col-6 text-center" style={{left: "15%"}}>
@@ -118,7 +129,11 @@ const RiskRateResults = (props) => {
                     )}
                     <h2>Risk Category</h2>
                     <h3>{riskCategory}</h3>
+                    <h3 style={{color: textColour}}>{riskText}</h3>
                 </div>
+            </div>
+            <div className="row justify-content-center row-padding">
+                <button className="btn btn-primary" onClick={backToDetails}>Go Back To Details</button>
             </div>
         </div>
     );

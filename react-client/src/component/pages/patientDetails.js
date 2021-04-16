@@ -116,7 +116,7 @@ const PatientDetails = (props) => {
                         </div>
                     </div>
                 <div className="row">
-                        <PatientClinicalData clinicalData={clinicalData}/>
+                        <PatientClinicalData clinicalData={clinicalData} id={props.location.id}/>
                 </div>
                 </div>
             </div>
