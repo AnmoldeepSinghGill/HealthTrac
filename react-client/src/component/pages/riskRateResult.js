@@ -2,17 +2,23 @@ import {useContext, useEffect, useState} from 'react';
 import AuthContext from '../../context/auth/authContext';
 import "../../App.css";
 import {withRouter} from "react-router-dom";
-import {buildStyles, CircularProgressbar} from 'react-circular-progressbar';
+import {buildStyles, CircularProgressbar, CircularProgressbarWithChildren} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import ChangingProgressProvider from "./ChangingProgressProvider";
 import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
+import RadialSeparators from "./circular-progress-bar/RadialSeparator";
 
 const RiskRateResults = (props) => {
     const authContext = useContext(AuthContext);
     const { loadUser } = authContext;
     const [loading, setLoading] = useState(true);
     const [riskCategory, setRiskCategory] = useState(0);
+    const [textColour, setTextColour] = useState('blue');
+    const [progressStyles, setProgressStyles] = useState({
+        strokeLinecap: "butt",
+        textColor: {textColour},
+        trailColor: {textColour}
+    });
     const trainUrl = "http://localhost:3000/run";
 
     useEffect(() => {
@@ -35,6 +41,7 @@ const RiskRateResults = (props) => {
             }
 
             setRiskCategory(category);
+            determineTextColor(category);
             console.log(category);
         }).catch(err => {
             setLoading(false);
@@ -46,22 +53,62 @@ const RiskRateResults = (props) => {
         props.history.push({pathname: "/addPatientVitalSigns", id: props.location.id});
     }
 
+    const determineTextColor = (category) => {
+        switch (category) {
+            case 0:
+                setTextColour("green");
+                break;
+            case 1:
+                setTextColour("yellow");
+                break;
+            case 2:
+                setTextColour("yellow");
+                break;
+            case 3:
+                setTextColour("red");
+                break;
+            case 4:
+                setTextColour("red");
+                break;
+            default:
+                setTextColour("blue");
+        }
+        setProgressStyles({
+            strokeLinecap: "butt",
+            textColor: {textColour},
+            trailColor: {textColour}
+        })
+    }
+
     return (
         <div className="card-container">
             <div className="row justify-content-center">
                 <h2>Patient's <span className="text-primary">Risk Rate</span></h2>
             </div>
             <div className="row row-padding">
-                <div className="col-6 text-center">
-                            <CircularProgressbar
-                                value={30}
-                                text={`${30}`}
-                                styles={buildStyles({
-                                    strokeLinecap: "butt"
-                                })}
-                                className="progress-bar-custom"
-                                strokeWidth={10}
-                            />
+                <div className="col-6 text-center" style={{left: "15%"}}>
+                    <div className="progress-bar-custom">
+                    <CircularProgressbarWithChildren
+                        value={riskCategory}
+                        text={`${riskCategory}`}
+                        minValue={0}
+                        maxValue={4}
+                        strokeWidth={5}
+                        styles={buildStyles({
+                            progressStyles
+                        })}
+                        key={textColour}
+                    >
+                        <RadialSeparators
+                            count={4}
+                            style={{
+                                background: "#fff",
+                                width: "10px",
+                                height: `${5}%`
+                            }}
+                        />
+                    </CircularProgressbarWithChildren>
+                    </div>
                 </div>
                 <div className="col-6 text-center">
                     {loading && (
