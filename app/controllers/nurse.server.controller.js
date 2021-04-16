@@ -5,6 +5,7 @@ const MotivationalTip = require('mongoose').model('MotivationalTip');
 const VitalSign = require('mongoose').model('VitalSign');
 const ClinicalData = require('mongoose').model('ClinicalData');
 
+
 exports.getAllNurses = async (req, res) => {
 
     Account.find({accountType: 'NURSE'}, (err, accounts) => {
@@ -89,6 +90,9 @@ exports.addClinicalData = async (req, res,) => {
         } else {
             if (data) {
                 let pat = req.patient;
+
+                
+
                 pat.clinicalData.push(data);
                 Patient.findByIdAndUpdate(req.patient._id, pat, (err, patient) => {
                     if (err) {
