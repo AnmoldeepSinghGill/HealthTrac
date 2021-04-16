@@ -18,7 +18,6 @@ const SymptomCheck = (props) => {
 
     const handleOnSubmit = (event) => {
         event.preventDefault();
-      
             props.history.push({pathname: "/"});
         
     };
@@ -43,21 +42,21 @@ const SymptomCheck = (props) => {
     }
 
     let message;
-    if(symptomCount.count ==0){
+    if(symptomCount.count === 0){
     message =   <h2>Nothing</h2>
     }
-    else if(symptomCount.count ==1){
+    else if(symptomCount.count === 1){
         message =<h2>Allergies</h2>
     }
-    else if (symptomCount.count ==2 ||symptomCount.count ==3 ){
+    else if (symptomCount.count === 2 ||symptomCount.count === 3 ){
         message =<h2>Severe Allergies (see a pharamcist and get some medicene)</h2>
     }
 
-    else if ( symptomCount.count == 6 ||symptomCount.count == 5 || symptomCount.count == 4 ){
+    else if ( symptomCount.count === 6 ||symptomCount.count === 5 || symptomCount.count === 4 ){
         message =<h2>Cold (Take some medicene and call the doctor)</h2>
     }
 
-    else if (symptomCount.count == 7 ){
+    else if (symptomCount.count === 7 ){
         message =<h2>Please Go to the hospital  </h2>
     }
 
@@ -69,7 +68,7 @@ const SymptomCheck = (props) => {
                 </div>
                 <Form className="register-form" onSubmit={handleOnSubmit} >
                     <div>
-                <input type="checkbox" name="runnyNose" id="runnyNose" props="" value ="0" onChange={onChange}/>
+                <input type="checkbox" name="runnyNose" id="runnyNose" value ="0" onChange={onChange}/>
   <label for="runnyNose">Runny Nose</label>
   </div>
   <div>
@@ -86,21 +85,21 @@ const SymptomCheck = (props) => {
   </div>
         
   <div className="row justify-content-center">
-                        <Button variant="success" type="submit">
+                        <Button variant="primary" type="submit">
                            Home
                         </Button>
                     </div>
                 </Form>
-            </div>
+                <div className="row justify-content-center row-padding">
 
-            <div>
-
-                <h1>
-                    Possible Medical Condition and Advice 
-                </h1>
-                <hr/>
-               {message}
+                    <h1>
+                        Possible Medical Condition and Advice
+                    </h1>
                 </div>
+                <div className="row justify-content-center row-padding">
+                    {message}
+                </div>
+            </div>
         </div>
     );
 

@@ -4,15 +4,15 @@ const Schema = mongoose.Schema;
 
 // Define a new 'EmergencyAlertSchema'
 const EmergencyAlertSchema = new Schema({
-  status: {
-    type: String,
-    enum: ["SENT", "DRAFT"],
-  },
   reason: String,
-  vitalSigns: {
-    type: Schema.Types.ObjectId,
-    ref: "VitalSign",
+  notified: {
+    type: Boolean,
+    default: false
   },
+  date: {
+    type: Date,
+    default: new Date()
+  }
 });
 
 // Configure the 'EmergencyAlertSchema' to use getters and virtuals when transforming to JSON

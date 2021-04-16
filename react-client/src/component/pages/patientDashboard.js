@@ -34,12 +34,19 @@ const PatientDashboard = (props) => {
         props.history.push({pathname: "/patient/vitalsign", id: props.location.id});
     }
 
+    const onSendEmergencyAlert = () => {
+        props.history.push({pathname: "/patient/sendEmergencyAlert"});
+    }
+
     return (
         <div>
             <div className="card-container">
                 <div className="container-fluid">
                     <div className="row justify-content-center row-title">
                         <h1>Patient <span className="text-primary">Dashboard</span></h1>
+                    </div>
+                    <div className="row justify-content-end row-padding" style={{marginBottom: "20px"}}>
+                        <button className="btn btn-danger btn-block" onClick={onSendEmergencyAlert}>Send Emergency Alert</button>
                     </div>
                     <div className="row justify-content-center row-padding">
                         <h2>Today's Motivation</h2>

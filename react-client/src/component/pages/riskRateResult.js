@@ -53,19 +53,15 @@ const RiskRateResults = (props) => {
             </div>
             <div className="row row-padding">
                 <div className="col-6 text-center">
-                    <ChangingProgressProvider values={[0, 20, 40, 60, 80, 100]}>
-                        {percentage => (
                             <CircularProgressbar
-                                value={percentage}
-                                text={`${percentage}%`}
+                                value={30}
+                                text={`${30}`}
                                 styles={buildStyles({
-                                    textColor: "blue",
-                                    pathColor: "green"
+                                    strokeLinecap: "butt"
                                 })}
                                 className="progress-bar-custom"
+                                strokeWidth={10}
                             />
-                        )}
-                    </ChangingProgressProvider>
                 </div>
                 <div className="col-6 text-center">
                     {loading && (
