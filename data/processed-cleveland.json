@@ -32,22 +32,6 @@
    "riskCategory": 2
  },
  {
-   "age": 67,
-   "sex": 1,
-   "cp": 4,
-   "trestbps": 120,
-   "chol": 229,
-   "fbs": 0,
-   "restecg": 2,
-   "thalach": 129,
-   "exang": 1,
-   "oldpeak": 2.6,
-   "slope": 2,
-   "ca": 2,
-   "thal": 7,
-   "riskCategory": 1
- },
- {
    "age": 37,
    "sex": 1,
    "cp": 3,
@@ -255,22 +239,7 @@
    "thal": 3,
    "riskCategory": 0
  },
- {
-   "age": 48,
-   "sex": 1,
-   "cp": 2,
-   "trestbps": 110,
-   "chol": 229,
-   "fbs": 0,
-   "restecg": 0,
-   "thalach": 168,
-   "exang": 0,
-   "oldpeak": 1,
-   "slope": 3,
-   "ca": 0,
-   "thal": 7,
-   "riskCategory": 1
- },
+
  {
    "age": 54,
    "sex": 1,
@@ -351,22 +320,7 @@
    "thal": 3,
    "riskCategory": 0
  },
- {
-   "age": 58,
-   "sex": 1,
-   "cp": 2,
-   "trestbps": 120,
-   "chol": 284,
-   "fbs": 0,
-   "restecg": 2,
-   "thalach": 160,
-   "exang": 0,
-   "oldpeak": 1.8,
-   "slope": 2,
-   "ca": 0,
-   "thal": 3,
-   "riskCategory": 1
- },
+ 
  {
    "age": 58,
    "sex": 1,
@@ -511,22 +465,7 @@
    "thal": 7,
    "riskCategory": 2
  },
- {
-   "age": 64,
-   "sex": 1,
-   "cp": 3,
-   "trestbps": 140,
-   "chol": 335,
-   "fbs": 0,
-   "restecg": 0,
-   "thalach": 158,
-   "exang": 0,
-   "oldpeak": 0,
-   "slope": 1,
-   "ca": 0,
-   "thal": 3,
-   "riskCategory": 1
- },
+ 
  {
    "age": 59,
    "sex": 1,
@@ -591,22 +530,7 @@
    "thal": 7,
    "riskCategory": 3
  },
- {
-   "age": 57,
-   "sex": 1,
-   "cp": 4,
-   "trestbps": 150,
-   "chol": 276,
-   "fbs": 0,
-   "restecg": 2,
-   "thalach": 112,
-   "exang": 1,
-   "oldpeak": 0.6,
-   "slope": 2,
-   "ca": 1,
-   "thal": 6,
-   "riskCategory": 1
- },
+
  {
    "age": 55,
    "sex": 1,
@@ -863,22 +787,7 @@
    "thal": 3,
    "riskCategory": 0
  },
- {
-   "age": 60,
-   "sex": 1,
-   "cp": 4,
-   "trestbps": 130,
-   "chol": 253,
-   "fbs": 0,
-   "restecg": 0,
-   "thalach": 144,
-   "exang": 1,
-   "oldpeak": 1.4,
-   "slope": 1,
-   "ca": 1,
-   "thal": 7,
-   "riskCategory": 1
- },
+
  {
    "age": 54,
    "sex": 1,
@@ -895,38 +804,8 @@
    "thal": 7,
    "riskCategory": 1
  },
- {
-   "age": 50,
-   "sex": 1,
-   "cp": 3,
-   "trestbps": 140,
-   "chol": 233,
-   "fbs": 0,
-   "restecg": 0,
-   "thalach": 163,
-   "exang": 0,
-   "oldpeak": 0.6,
-   "slope": 2,
-   "ca": 1,
-   "thal": 7,
-   "riskCategory": 1
- },
- {
-   "age": 41,
-   "sex": 1,
-   "cp": 4,
-   "trestbps": 110,
-   "chol": 172,
-   "fbs": 0,
-   "restecg": 2,
-   "thalach": 158,
-   "exang": 0,
-   "oldpeak": 0,
-   "slope": 1,
-   "ca": 0,
-   "thal": 7,
-   "riskCategory": 1
- },
+
+
  {
    "age": 54,
    "sex": 1,
@@ -975,22 +854,7 @@
    "thal": 7,
    "riskCategory": 2
  },
- {
-   "age": 58,
-   "sex": 1,
-   "cp": 4,
-   "trestbps": 128,
-   "chol": 216,
-   "fbs": 0,
-   "restecg": 2,
-   "thalach": 131,
-   "exang": 1,
-   "oldpeak": 2.2,
-   "slope": 2,
-   "ca": 3,
-   "thal": 7,
-   "riskCategory": 1
- },
+
  {
    "age": 54,
    "sex": 1,
@@ -1055,22 +919,7 @@
    "thal": 7,
    "riskCategory": 2
  },
- {
-   "age": 46,
-   "sex": 1,
-   "cp": 3,
-   "trestbps": 150,
-   "chol": 231,
-   "fbs": 0,
-   "restecg": 0,
-   "thalach": 147,
-   "exang": 0,
-   "oldpeak": 3.6,
-   "slope": 2,
-   "ca": 0,
-   "thal": 3,
-   "riskCategory": 1
- },
+ 
  {
    "age": 67,
    "sex": 1,
@@ -1103,22 +952,7 @@
    "thal": 7,
    "riskCategory": 1
  },
- {
-   "age": 65,
-   "sex": 1,
-   "cp": 4,
-   "trestbps": 110,
-   "chol": 248,
-   "fbs": 0,
-   "restecg": 2,
-   "thalach": 158,
-   "exang": 0,
-   "oldpeak": 0.6,
-   "slope": 1,
-   "ca": 2,
-   "thal": 6,
-   "riskCategory": 1
- },
+
  {
    "age": 44,
    "sex": 1,
@@ -1327,38 +1161,8 @@
    "thal": 7,
    "riskCategory": 3
  },
- {
-   "age": 61,
-   "sex": 0,
-   "cp": 4,
-   "trestbps": 145,
-   "chol": 307,
-   "fbs": 0,
-   "restecg": 2,
-   "thalach": 146,
-   "exang": 1,
-   "oldpeak": 1,
-   "slope": 2,
-   "ca": 0,
-   "thal": 7,
-   "riskCategory": 1
- },
- {
-   "age": 56,
-   "sex": 1,
-   "cp": 4,
-   "trestbps": 125,
-   "chol": 249,
-   "fbs": 1,
-   "restecg": 2,
-   "thalach": 144,
-   "exang": 1,
-   "oldpeak": 1.2,
-   "slope": 2,
-   "ca": 1,
-   "thal": 3,
-   "riskCategory": 1
- },
+ 
+
  {
    "age": 43,
    "sex": 0,
@@ -1551,22 +1355,7 @@
    "thal": 7,
    "riskCategory": 3
  },
- {
-   "age": 35,
-   "sex": 1,
-   "cp": 4,
-   "trestbps": 120,
-   "chol": 198,
-   "fbs": 0,
-   "restecg": 0,
-   "thalach": 130,
-   "exang": 1,
-   "oldpeak": 1.6,
-   "slope": 2,
-   "ca": 0,
-   "thal": 7,
-   "riskCategory": 1
- },
+ 
  {
    "age": 59,
    "sex": 1,
@@ -1599,22 +1388,7 @@
    "thal": 7,
    "riskCategory": 1
  },
- {
-   "age": 47,
-   "sex": 1,
-   "cp": 3,
-   "trestbps": 108,
-   "chol": 243,
-   "fbs": 0,
-   "restecg": 0,
-   "thalach": 152,
-   "exang": 0,
-   "oldpeak": 0,
-   "slope": 1,
-   "ca": 0,
-   "thal": 3,
-   "riskCategory": 1
- },
+ 
  {
    "age": 57,
    "sex": 1,
@@ -1695,22 +1469,7 @@
    "thal": 7,
    "riskCategory": 1
  },
- {
-   "age": 58,
-   "sex": 1,
-   "cp": 4,
-   "trestbps": 125,
-   "chol": 300,
-   "fbs": 0,
-   "restecg": 2,
-   "thalach": 171,
-   "exang": 0,
-   "oldpeak": 0,
-   "slope": 1,
-   "ca": 2,
-   "thal": 7,
-   "riskCategory": 1
- },
+
  {
    "age": 60,
    "sex": 1,
@@ -1807,22 +1566,7 @@
    "thal": 6,
    "riskCategory": 4
  },
- {
-   "age": 57,
-   "sex": 1,
-   "cp": 4,
-   "trestbps": 152,
-   "chol": 274,
-   "fbs": 0,
-   "restecg": 0,
-   "thalach": 88,
-   "exang": 1,
-   "oldpeak": 1.2,
-   "slope": 2,
-   "ca": 1,
-   "thal": 7,
-   "riskCategory": 1
- },
+ 
  {
    "age": 56,
    "sex": 1,
@@ -1871,22 +1615,7 @@
    "thal": 7,
    "riskCategory": 2
  },
- {
-   "age": 60,
-   "sex": 0,
-   "cp": 4,
-   "trestbps": 158,
-   "chol": 305,
-   "fbs": 0,
-   "restecg": 2,
-   "thalach": 161,
-   "exang": 0,
-   "oldpeak": 0,
-   "slope": 1,
-   "ca": 0,
-   "thal": 3,
-   "riskCategory": 1
- },
+
  {
    "age": 66,
    "sex": 1,
@@ -2111,22 +1840,7 @@
    "thal": 7,
    "riskCategory": 3
  },
- {
-   "age": 52,
-   "sex": 1,
-   "cp": 4,
-   "trestbps": 112,
-   "chol": 230,
-   "fbs": 0,
-   "restecg": 0,
-   "thalach": 160,
-   "exang": 0,
-   "oldpeak": 0,
-   "slope": 1,
-   "ca": 1,
-   "thal": 3,
-   "riskCategory": 1
- },
+ 
  {
    "age": 53,
    "sex": 1,
@@ -2143,22 +1857,7 @@
    "thal": 7,
    "riskCategory": 3
  },
- {
-   "age": 63,
-   "sex": 0,
-   "cp": 4,
-   "trestbps": 108,
-   "chol": 269,
-   "fbs": 0,
-   "restecg": 0,
-   "thalach": 169,
-   "exang": 1,
-   "oldpeak": 1.8,
-   "slope": 2,
-   "ca": 2,
-   "thal": 3,
-   "riskCategory": 1
- },
+ 
  {
    "age": 54,
    "sex": 1,
