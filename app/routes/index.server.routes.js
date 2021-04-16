@@ -1,6 +1,11 @@
 //This uses CommonJS module pattern to export a single module function.
 //This function takes an express object as argument
 
+
+/**
+ * Name: Anmoldeep Singh Gill, Mohammad bakir, Alvin Yap, Kharak Kular
+ * Student Number: 301044883, 300987420, 301041207, 301042015
+ */
 //Load the 'index' controller
 const index = require("../controllers/index.server.controller");
 //

@@ -3,6 +3,11 @@ const VitalSign = require('mongoose').model('VitalSign');
 const EmergencyAlert = require('mongoose').model('EmergencyAlert');
 const ObjectId = require('mongodb');
 
+/**
+ * Name: Anmoldeep Singh Gill, Mohammad bakir, Alvin Yap, Kharak Kular
+ * Student Number: 301044883, 300987420, 301041207, 301042015
+ */
+
 exports.getPatient = async (req, res) => {
     try {
         const patient = await Patient.findOne({ account: req.user.id });

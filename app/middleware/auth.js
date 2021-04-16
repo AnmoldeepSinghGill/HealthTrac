@@ -1,6 +1,11 @@
 // This function will be used for checking the logged in user's token
 // and will be passed with the private routes.
 
+/**
+ * Name: Anmoldeep Singh Gill, Mohammad bakir, Alvin Yap, Kharak Kular
+ * Student Number: 301044883, 300987420, 301041207, 301042015
+ */
+
 const jwt = require('jsonwebtoken');
 const config = require('../../config/config');
 

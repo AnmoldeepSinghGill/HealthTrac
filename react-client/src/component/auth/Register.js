@@ -4,6 +4,11 @@ import AuthContext from '../../context/auth/authContext';
 import AlertContext from '../../context/alert/alertContext';
 import axios from "axios";
 
+/**
+ * Name: Anmoldeep Singh Gill, Mohammad bakir, Alvin Yap, Kharak Kular
+ * Student Number: 301044883, 300987420, 301041207, 301042015
+ */
+
 const Register = () => {
     // Redirect to appropriate component using history
     const history = useHistory();

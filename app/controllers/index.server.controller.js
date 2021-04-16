@@ -5,7 +5,10 @@ require("@tensorflow/tfjs-node");
 const  healthData= require("../../data/processed-cleveland.json");
 const testData = require("../../data/testData.json")
 
-
+/**
+ * Name: Anmoldeep Singh Gill, Mohammad bakir, Alvin Yap, Kharak Kular
+ * Student Number: 301044883, 300987420, 301041207, 301042015
+ */
 
 var lossValue;
 //

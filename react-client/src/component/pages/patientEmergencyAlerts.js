@@ -2,6 +2,11 @@ import {useEffect} from 'react';
 import "../../App.css";
 import {withRouter} from "react-router-dom";
 
+/**
+ * Name: Anmoldeep Singh Gill, Mohammad bakir, Alvin Yap, Kharak Kular
+ * Student Number: 301044883, 300987420, 301041207, 301042015
+ */
+
 const PatientEmergencyAlerts = (props) => {
 
     useEffect(() => {

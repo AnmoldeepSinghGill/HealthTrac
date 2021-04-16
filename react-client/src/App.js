@@ -13,10 +13,13 @@ import setAuthToken from '../src/utils/setAuthToken';
 import PrivateRoute from './component/routing/privateRoute';
 import PatientVitalSign from './component/patient/PatientVitalSign';
 import PatientState from './context/patient/PatientState';
-import Nav from 'react-bootstrap/Nav';
 import './App.css';
 //
 
+/**
+ * Name: Anmoldeep Singh Gill, Mohammad bakir, Alvin Yap, Kharak Kular
+ * Student Number: 301044883, 300987420, 301041207, 301042015
+ */
 
 import Home from './component/pages/Home';
 import Login from './component/auth/Login';
@@ -37,31 +40,6 @@ if (sessionStorage.token) {
 function App() {
 
   return (
-    //<Router>
-      //<Navbar bg="light" expand="lg">
-       // <Navbar.Toggle aria-controls="basic-navbar-nav" />
-       // <Navbar.Collapse id="basic-navbar-nav">
-         // <Nav className="mr-auto">
-          //  <Nav.Link className="navi" href="/home">Home</Nav.Link>
-          //  <Nav.Link className="navi" href="/login">Login</Nav.Link>
-          //  <Nav.Link className="navi"href="/list">List of Users</Nav.Link>
-          //  <Nav.Link className="navi"href="/listCourses">List of Courses</Nav.Link>
-          //  <Nav.Link className="navi"href="/create">Sign Up</Nav.Link>
-       //   </Nav>
-       // </Navbar.Collapse>
-     // </Navbar>
-     // <div>          
-         // <Route render ={()=> < Home />} path="/home" /> 
-         // <Route render ={()=> < Login />} path="/login" />
-         // <Route render ={()=> < List />} path="/list" />
-         // <Route render ={()=> < ListCourses />} path="/listCourses" />
-         // <Route render ={()=> < EditStudent />} path="/edit/:id" />
-       //  <Route render ={()=> < CreateAccount/>} path="/create" />
-       //  <Route render ={()=> < ShowUser />} path="/show/:id" />
-      //    <Route render ={()=> < ShowArticle />} path="/showCourse/:id" />
-      //    <Route render ={()=> < EditArticle />} path="/editarticle/:id" />
-     // </div>
-    // </Router>
     <AuthState>
       <AlertState>
         <PatientState>

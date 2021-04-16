@@ -3,6 +3,11 @@ import AuthContext from '../../context/auth/authContext';
 import NurseDashboard from "./nurseDashboard";
 import PatientDashboard from "./patientDashboard";
 
+/**
+ * Name: Anmoldeep Singh Gill, Mohammad bakir, Alvin Yap, Kharak Kular
+ * Student Number: 301044883, 300987420, 301041207, 301042015
+ */
+
 const Home = () => {
     const authContext = useContext(AuthContext);
     const { loadUser, user, loading } = authContext;

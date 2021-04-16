@@ -4,6 +4,11 @@ import axios from "axios";
 import {withRouter} from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 
+/**
+ * Name: Anmoldeep Singh Gill, Mohammad bakir, Alvin Yap, Kharak Kular
+ * Student Number: 301044883, 300987420, 301041207, 301042015
+ */
+
 const AddExistingPatientMotivationalTip = (props) => {
     const authContext = useContext(AuthContext);
     const { loadUser } = authContext;
