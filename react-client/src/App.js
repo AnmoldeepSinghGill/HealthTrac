@@ -16,17 +16,11 @@ import PatientState from './context/patient/PatientState';
 import Nav from 'react-bootstrap/Nav';
 import './App.css';
 //
-import List from './components/List';
-import EditStudent from './components/EditStudent';
-import EditArticle from './components/EditArticle';
 
-import CreateAccount from './components/CreateAccount';
-import ShowUser from './components/ShowStudent';
-import ShowArticle from './components/ShowArticle';
 
 import Home from './component/pages/Home';
 import Login from './component/auth/Login';
-import ListCourses from './components/ListCourses';
+import SymptomCheck from './component/pages/symptomCheck';
 import PatientDetails from "./component/pages/patientDetails";
 import AddPatientClinicalData from "./component/pages/addPatientClinicalData";
 import AddPatientMotivationalTip from "./component/pages/addPatientMotivationalTip";
@@ -87,6 +81,7 @@ function App() {
                   <Route exact path='/login' component={Login} />
                   <Route exact path='/register' component={Register} />
                   <PrivateRoute exact path='/patient/vitalsign' component={PatientVitalSign} />
+                  <PrivateRoute exact path ='/patient/symptoms' component={SymptomCheck}/>
                 </Switch>
               </div>
             </Fragment>
