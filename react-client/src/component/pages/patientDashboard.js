@@ -34,6 +34,14 @@ const PatientDashboard = (props) => {
         props.history.push({pathname: "/patient/vitalsign", id: props.location.id});
     }
 
+    const onSendEmergencyAlert = () => {
+        props.history.push({pathname: "/patient/sendEmergencyAlert"});
+    }
+
+    const onCheckSymptoms = () => {
+        props.history.push({pathname: "/patient/symptoms"});
+    }
+
     return (
         <div>
             <div className="card-container">
@@ -41,11 +49,19 @@ const PatientDashboard = (props) => {
                     <div className="row justify-content-center row-title">
                         <h1>Patient <span className="text-primary">Dashboard</span></h1>
                     </div>
+                    <div className="row justify-content-end row-padding" style={{marginBottom: "20px"}}>
+                        <button className="btn btn-danger btn-block" onClick={onSendEmergencyAlert}>Send Emergency Alert</button>
+                    </div>
                     <div className="row justify-content-center row-padding">
                         <h2>Today's Motivation</h2>
                     </div>
                     <div className="row justify-content-end" style={{marginBottom: "20px"}}>
+                        <div className="col-2">
+                            <button className="btn btn-warning" onClick={onCheckSymptoms}>Check Symptoms</button>
+                        </div>
+                        <div className="col-2">
                             <button className="btn btn-primary" onClick={onAddVitalSigns}>Add VitalSigns</button>
+                        </div>
                     </div>
                     {motivationalTip.videoLink !== '' ? (
                         <div className="row justify-content-center">
@@ -60,9 +76,6 @@ const PatientDashboard = (props) => {
                     )}
                 </div>
             </div>
-            <Link to="/patient/vitalsign">Add Vital Signs</Link>
-            <br/>
-            <Link to="/patient/symptoms">Symptom Checker</Link>
         </div>
     );
 };

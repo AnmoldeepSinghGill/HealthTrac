@@ -5,6 +5,7 @@ import {withRouter} from "react-router-dom";
 import PatientMotivationalTips from "./patientMotivationalTip";
 import PatientVitalSigns from "./patientVitalSigns";
 import PatientClinicalData from "./patientClinicalData";
+import PatientEmergencyAlerts from "./patientEmergencyAlerts";
 
 const PatientDetails = (props) => {
     const authContext = useContext(AuthContext);
@@ -12,6 +13,7 @@ const PatientDetails = (props) => {
     const [motivationalTips, setMotivationalTips] = useState([]);
     const [vitalSigns, setVitalSigns] = useState([]);
     const [clinicalData, setClinicalData] = useState([]);
+    const [emergencyAlerts, setEmergencyAlerts] = useState([]);
     const [patientDetails, setPatientDetails] = useState({
         firstName: '',
         lastname: '',
@@ -38,6 +40,7 @@ const PatientDetails = (props) => {
                 setPatientDetails(result.data.account);
                 setVitalSigns(result.data.vitalSigns);
                 setClinicalData(result.data.clinicalData);
+                setEmergencyAlerts(result.data.emergencyAlerts);
             }).catch((error) => {
                 console.log("error in fetching nurses:", error);
             });
@@ -100,6 +103,9 @@ const PatientDetails = (props) => {
                             {patientDetails.phoneNumber}
                         </div>
                     </div>
+                    </div>
+                    <div className="row">
+                        <PatientEmergencyAlerts emergencyAlerts={emergencyAlerts}/>
                     </div>
                     <div className="row">
                         <div className="col-6">
