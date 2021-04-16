@@ -66,7 +66,6 @@ const AddPatientClinicalData = (props) => {
     const handleOnSubmit = (event) => {
         event.preventDefault();
         if (props.location.id) {
-            getPatientCategory();
             addPatientClinicalData();
         } else {
             props.history.push({pathname: "/"});
