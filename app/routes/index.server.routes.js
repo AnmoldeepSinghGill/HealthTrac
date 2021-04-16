@@ -2,7 +2,7 @@
 //This function takes an express object as argument
 
 //Load the 'index' controller
-var index = require("../controllers/index.server.controller");
+const index = require("../controllers/index.server.controller");
 //
 //handle routing for get and post request
 module.exports = function (app) {

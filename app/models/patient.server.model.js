@@ -26,6 +26,16 @@ const PatientSchema = new Schema({
       ref: "MotivationalTip",
     },
   ],
+  clinicalData: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "ClinicalData",
+    },
+  ],
+  nurse: {
+    type: Schema.Types.ObjectId,
+    ref: "Nurse",
+  }
 });
 
 // Configure the 'PatientSchema' to use getters and virtuals when transforming to JSON

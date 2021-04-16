@@ -11,6 +11,8 @@ import Register from './component/auth/Register';
 import Navbar from './component/layout/Navbar';
 import setAuthToken from '../src/utils/setAuthToken';
 import PrivateRoute from './component/routing/privateRoute';
+import PatientVitalSign from './component/patient/PatientVitalSign';
+import PatientState from './context/patient/PatientState';
 import Nav from 'react-bootstrap/Nav';
 import './App.css';
 //
@@ -25,10 +27,15 @@ import ShowArticle from './components/ShowArticle';
 import Home from './component/pages/Home';
 import Login from './component/auth/Login';
 import ListCourses from './components/ListCourses';
+import PatientDetails from "./component/pages/patientDetails";
+import AddPatientClinicalData from "./component/pages/addPatientClinicalData";
+import AddPatientMotivationalTip from "./component/pages/addPatientMotivationalTip";
+import AddPatientVitalSign from "./component/pages/addPatientVitalSign";
+import AddExistingPatientMotivationalTip from "./component/pages/existingMotivationalTips";
 //
 
-if (localStorage.token) {
-  setAuthToken(localStorage.token);
+if (sessionStorage.token) {
+  setAuthToken(sessionStorage.token);
 }
 
 function App() {
@@ -61,20 +68,28 @@ function App() {
     // </Router>
     <AuthState>
       <AlertState>
-        <Router>
-          <Fragment>
-            <Navbar />
-            <div className="container">
-              <Alert />
-              <Switch>
-                {/* Use PrivateRoute for private access components */}
-                <PrivateRoute exact path='/' component={Home} />
-                <Route exact path='/login' component={Login} />
-                <Route exact path='/register' component={Register} />
-              </Switch>
-            </div>
-          </Fragment>
-        </Router>
+        <PatientState>
+          <Router>
+            <Fragment>
+              <Navbar />
+              <div className="container" style={{maxWidth: "1200px"}}>
+                <Alert />
+                <Switch>
+                  {/* Use PrivateRoute for private access components */}
+                  <PrivateRoute exact path='/' component={Home} />
+                  <PrivateRoute exact path='/showDetails' component={PatientDetails} />
+                  <PrivateRoute exact path='/addPatientClinicalData' component={AddPatientClinicalData} />
+                  <PrivateRoute exact path='/addPatientMotivationalTip' component={AddPatientMotivationalTip} />
+                  <PrivateRoute exact path='/addExistingPatientMotivationalTip' component={AddExistingPatientMotivationalTip} />
+                  <PrivateRoute exact path='/addPatientVitalSigns' component={AddPatientVitalSign} />
+                  <Route exact path='/login' component={Login} />
+                  <Route exact path='/register' component={Register} />
+                  <PrivateRoute exact path='/patient/vitalsign' component={PatientVitalSign} />
+                </Switch>
+              </div>
+            </Fragment>
+          </Router>
+        </PatientState>
       </AlertState>
     </AuthState>
   );
