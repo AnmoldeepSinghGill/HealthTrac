@@ -38,6 +38,10 @@ const PatientDashboard = (props) => {
         props.history.push({pathname: "/patient/sendEmergencyAlert"});
     }
 
+    const onCheckSymptoms = () => {
+        props.history.push({pathname: "/patient/symptoms"});
+    }
+
     return (
         <div>
             <div className="card-container">
@@ -52,7 +56,12 @@ const PatientDashboard = (props) => {
                         <h2>Today's Motivation</h2>
                     </div>
                     <div className="row justify-content-end" style={{marginBottom: "20px"}}>
+                        <div className="col-2">
+                            <button className="btn btn-warning" onClick={onCheckSymptoms}>Check Symptoms</button>
+                        </div>
+                        <div className="col-2">
                             <button className="btn btn-primary" onClick={onAddVitalSigns}>Add VitalSigns</button>
+                        </div>
                     </div>
                     {motivationalTip.videoLink !== '' ? (
                         <div className="row justify-content-center">
@@ -67,9 +76,6 @@ const PatientDashboard = (props) => {
                     )}
                 </div>
             </div>
-            <Link to="/patient/vitalsign">Add Vital Signs</Link>
-            <br/>
-            <Link to="/patient/symptoms">Symptom Checker</Link>
         </div>
     );
 };
